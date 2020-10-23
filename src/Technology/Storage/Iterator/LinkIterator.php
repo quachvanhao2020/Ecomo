@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Technology\Storage\Iterator;
 
-use YesPHP\Iterator;
+use YPHP\Iterator;
 use Ecomo\Technology\Link;
 
 class LinkIterator extends Iterator{

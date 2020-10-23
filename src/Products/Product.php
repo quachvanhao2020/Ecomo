@@ -5,7 +5,7 @@ use Ecomo\Filter\AwarePriceInterface;
 use Ecomo\Filter\AwareSortFilterInterface;
 use Ecomo\Filter\AwareKeepInterface;
 use Ecomo\Filter\SortFilter;
-use Ecomo\Entity;
+use YPHP\Entity;
 use Ecomo\Money;
 
 class Product extends Entity implements 

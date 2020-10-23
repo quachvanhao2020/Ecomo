@@ -2,6 +2,7 @@
 namespace Ecomo\Identity;
 use Ecomo\Address;
 use Ecomo\Orders\Order;
+use Identimo\User;
 
 class Customer extends User{
     const DEFAULTSHIPPINGADDRESS = "defaultShippingAddress";

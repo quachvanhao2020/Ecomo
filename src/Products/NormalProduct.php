@@ -3,7 +3,7 @@ namespace Ecomo\ECommerce;
 
 use TGDDFace\Traits\RefJsonSerializeTrait;
 
-use Ecomo\Entity;
+use YPHP\Entity;
 use Ecomo\Technology\Media\VideoModel;
 use Ecomo\Technology\Media\ImageModel360;
 use Ecomo\Technology\PhoneParameterModel;
@@ -20,7 +20,6 @@ class NormalProduct extends Product{
 
     const COMMENTS = "comments";
     const SKINS = "skins";
-    const PRODUCT = "product";
     const VIDEO = "video";
     const IMAGEMODEL360 = "imageModel360";
     const COMBOS = "combos";
@@ -30,12 +29,9 @@ class NormalProduct extends Product{
     const COMPARES = "compares";
     const NEWSLIST = "newsList";
     const ACCESSORIES = "accessories";
-    const IMAGE = "image";
 
     public function __toArray() {
         return array_merge(parent::__toArray(),[
-            self::IMAGE => $this->getImage(),
-            self::PRODUCT => $this->getProduct(),
             self::SKINS => $this->getSkins(),
             self::VIDEO => $this->getVideo(),
             self::IMAGEMODEL360 => $this->getImageModel360(),

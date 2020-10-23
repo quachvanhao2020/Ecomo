@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Technology\Media;
 
-use Ecomo\Entity;
+use YPHP\Entity;
 
 class ImageModel extends Entity{
 

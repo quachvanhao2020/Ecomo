@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Technology\Media\Storage\Iterator;
 
-use YesPHP\Iterator;
+use YPHP\Iterator;
 use Ecomo\Technology\Media\ImageModel;
 
 class ImageModelIterator extends Iterator{

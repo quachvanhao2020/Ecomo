@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Technology\Media\Storage;
 
-use YesPHP\ArrayObject;
+use YPHP\ArrayObject;
 use Ecomo\Technology\Media\ImageModel;
 use Ecomo\Technology\Media\Storage\Iterator\ImageModelIterator;
 

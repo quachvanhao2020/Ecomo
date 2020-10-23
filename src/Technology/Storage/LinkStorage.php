@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Technology\Storage;
 
-use YesPHP\ArrayObject;
+use YPHP\ArrayObject;
 use Ecomo\Technology\Storage\Iterator\LinkIterator;
 use Ecomo\Technology\Link;
 
