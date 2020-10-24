@@ -2,14 +2,14 @@
 namespace Ecomo\Products\Storage\Iterator;
 
 use YPHP\Iterator;
-use Ecomo\Products\Product;
+use Ecomo\Products\ProductSocietyX;
 
-class ProductIterator extends Iterator{
+class ProductSocietyXIterator extends Iterator{
 
     /**
      * 
      *
-     * @return Product
+     * @return ProductSocietyX
      */
     function current() {
         return parent::current();

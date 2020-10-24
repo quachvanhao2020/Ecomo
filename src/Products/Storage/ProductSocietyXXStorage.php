@@ -2,26 +2,26 @@
 namespace Ecomo\Products\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Products\ProductSociety;
-use Ecomo\Products\Storage\Iterator\ProductSocietyIterator;
+use Ecomo\Products\ProductSocietyXX;
+use Ecomo\Products\Storage\Iterator\ProductSocietyXXIterator;
 
-class ProductSocietyStorage extends ArrayObject{
+class ProductSocietyXXStorage extends ArrayObject{
 
 
     /**
      * Create a new iterator from an ArrayObject instance
      *
-     * @return ProductSocietyIterator
+     * @return ProductSocietyXXIterator
      */
     public function getIterator()
     {
-        return new ProductSocietyIterator($this->storage);
+        return new ProductSocietyXXIterator($this->storage);
     }
 
     /**
      * Get the value of storage
      *
-     * @return  ProductSociety[]
+     * @return  ProductSocietyXX[]
      */ 
     public function getStorage()
     {
@@ -32,7 +32,7 @@ class ProductSocietyStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  ProductSociety[]  $storage
+     * @param  ProductSocietyXX[]  $storage
      *
      * @return  self
      */ 

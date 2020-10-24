@@ -1,9 +1,8 @@
 <?php
-namespace Ecomo\Tech\Storage;
+namespace Ecomo\Products\Storage;
 
 use YPHP\ArrayObject;
 use Ecomo\Products\Product;
-
 use Ecomo\Products\Storage\Iterator\ProductIterator;
 
 class ProductStorage extends ArrayObject{
