@@ -10,16 +10,20 @@
         "psr-4": {
             "Ecomo\\": "src/"
         },
-        "files": ["src/functions.php"]
+        "files": [
+            "src/functions.php",
+            "src/awake.php"
+        ]
     },
     "require": {
         "php": ">=5.3",
         "hao/yphp": "dev-main",
-        "hao/identimo": "dev-main"
+        "hao/identimo": "dev-main",
+        "hao/societymo": "dev-main"
     },
     "repositories": [
         {"type": "vcs", "url": "https://github.com/quachvanhao2020/YPHP.git"},
-        {"type": "vcs", "url": "https://github.com/quachvanhao2020/Identimo.git"}
-
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/Identimo.git"},
+        {"type": "vcs", "url": "https://github.com/quachvanhao2020/Societymo.git"}
     ]
 }

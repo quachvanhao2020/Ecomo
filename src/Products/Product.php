@@ -1,319 +1,106 @@
 <?php
 namespace Ecomo\Products;
 
-use Ecomo\Filter\AwarePriceInterface;
-use Ecomo\Filter\AwareSortFilterInterface;
-use Ecomo\Filter\AwareKeepInterface;
-use Ecomo\Filter\SortFilter;
-use YPHP\Entity;
+use YPHP\EntityFertility;
+use YPHP\DateTime;
+use Ecomo\Categorys\Category;
 use Ecomo\Money;
+use Ecomo\Tech\Storage\ProductStorage;
+use YPHP\Model\Media\Image;
 
-class Product extends Entity implements 
-AwarePriceInterface,
-AwareSortFilterInterface,
-AwareKeepInterface 
-{
 
-    const NAME = "name";
-    const HREF = "href";
+class Product extends EntityFertility{
+
+    const LOGO = "logo";
     const MONEY = "money";
     const OLDMONEY = "oldMoney";
-    const INSTALLMENT = "installment";
-    const PROMO = "promo";
-    const DISCOUNT = "discount";
-    const ISNEW = "isNew";
-    const ISFEATURE = "isFeature";
-    const IMAGE = "image";
-    const UNTRAIMAGE = "untraImage";
-    const INNERIMAGE = "innerImage";
-    const RATINGS = "ratings";
-    const DESCRIPTION = "description";
-    const SCRIPT = "script";
-    const ISMONOPOLY = "ismonopoly";
-    //const SCRIPT = "script";
+    const TAX = "tax";
+    const UPDATEDAT = "updatedAt";
+    const TYPE = "type";
+    const CATEGORY = "category";
+    const SLUG = "slug";
+    const AVAILABLEFORPURCHASE = "availableForPurchase";
+    const DEFAULTVARIANT = "defaultVaxriant";
+    const VARIANTS = "variants";
 
+    public function __toArray()
+    {
+        return array_merge(parent::__toArray(),[
+            self::LOGO => $this->getLogo(),
+            self::MONEY => $this->getMoney(),
+            self::OLDMONEY => $this->getOldMoney(),
+            self::TAX => $this->getTax(),
+            self::UPDATEDAT => $this->getUpdatedAt(),
+            self::TYPE => $this->getType(),
+            self::CATEGORY => $this->getCategory(),
+            self::SLUG => $this->getSlug(),
+            self::AVAILABLEFORPURCHASE => $this->getAvailableForPurchase(),
+            self::DEFAULTVARIANT => $this->getDefaultVariant(),
+            self::VARIANTS => $this->getVariants(),
+        ]);
+    }
 
-
-        /**
+    /**
      * 
      *
-     * @var string
+     * @var Image
      */
-    protected $name;
-
-            /**
-     * 
-     *
-     * @var string
-     */
-    protected $href;
-
-                /**
+    protected $logo;
+    /**
      * 
      *
      * @var Money
      */
     protected $money;
 
-
-                    /**
+    /**
      * 
      *
      * @var Money
      */
     protected $oldMoney;
-        /**
-     * 
-     *
-     * @var int
-     */
-    protected $installment;
-
-                    /**
-     * 
-     *
-     * @var self || int
-     */
-    protected $promo;
 
         /**
      * 
      *
-     * @var Money || int
+     * @var Money
      */
-    protected $discount;
-
-            /**
-     * 
-     *
-     * @var bool
-     */
-    protected $isNew;
-
-                /**
-     * 
-     *
-     * @var bool
-     */
-    protected $isMonopoly;
-
-                /**
-     * 
-     *
-     * @var bool
-     */
-    protected $isFeature;
-
-            /**
-     * 
-     *
-     * @var ImageModel || ImgView
-     */
-    protected $image;
-
-                /**
-     * 
-     *
-     * @var ImageModel || ImgView
-     */
-    protected $untraImage;
-
-                /**
-     * 
-     *
-     * @var ImageModel || ImgView
-     */
-    protected $innerImage;
-
+    protected $tax;
 
     /**
-     * 
-     *
-     * @var string[]
+     * @var DateTime
      */
-    protected $ratings;
+    protected $updatedAt;
 
-        /**
-     * 
-     *
+    /**
      * @var string
      */
-    protected $description;
+    protected $type;
 
-            /**
-     * 
-     *
+        /**
+     * @var Category
+     */
+    protected $category;
+
+    /**
      * @var string
      */
-    protected $script;
+    protected $slug;
 
-    public function getPrice(){
-
-        return $this->getMoney();
-
-    }
-
-    public function keepReason($flag = ''){
-
-        switch ($flag) {
-            case self::ISNEW:
-                
-                if(!$this->getIsNew()) return false;
-
-                break;
-
-            case self::ISMONOPOLY:
-
-                if(!$this->getIsMonopoly()) return false;
-
-                break;
-            
-            default:
-                # code...
-                break;
-        }
-
-        return true;
-
-    }
-
-    public function getWeight($flag = SortFilter::MOST){
-
-        switch ($flag) {
-            case SortFilter::MOST:
-                return count($this->getRatings());
-                break;
-            case SortFilter::SORT_DESC:
-
-            case SortFilter::SORT_ASC:
-                return $this->getMoney()->getPrice();
-                break;
-            default:
-                # code...
-                break;
-        }
-
-    }
+            /**
+     * @var bool
+     */
+    protected $availableForPurchase;
 
     /**
-     * Get the value of name
-     *
-     * @return  string
-     */ 
-    public function getName()
-    {
-        return $this->name;
-    }
+     * @var Product
+     */
+    protected $defaultVariant;
 
-    /**
-     * Set the value of name
-     *
-     * @param  string  $name
-     *
-     * @return  self
-     */ 
-    public function setName(string $name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of installment
-     *
-     * @return  int
-     */ 
-    public function getInstallment()
-    {
-        return $this->installment;
-    }
-
-    /**
-     * Set the value of installment
-     *
-     * @param  int  $installment
-     *
-     * @return  self
-     */ 
-    public function setInstallment(int $installment)
-    {
-        $this->installment = $installment;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of image
-     *
-     * @return  ImageModel
-     */ 
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Set the value of image
-     *
-     * @param  ImageModel || ImgView  $image
-     *
-     * @return  self
-     */ 
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of href
-     *
-     * @return  string
-     */ 
-    public function getHref()
-    {
-        return $this->href;
-    }
-
-    /**
-     * Set the value of href
-     *
-     * @param  string  $href
-     *
-     * @return  self
-     */ 
-    public function setHref(string $href)
-    {
-        $this->href = $href;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of isNew
-     *
-     * @return  bool
-     */ 
-    public function getIsNew()
-    {
-        return $this->isNew;
-    }
-
-    /**
-     * Set the value of isNew
-     *
-     * @param  bool  $isNew
-     *
-     * @return  self
-     */ 
-    public function setIsNew(bool $isNew)
-    {
-        $this->isNew = $isNew;
-
-        return $this;
-    }
+        /**
+     * @var ProductStorage
+     */
+    protected $variants;
 
     /**
      * Get the value of money
@@ -340,104 +127,6 @@ AwareKeepInterface
     }
 
     /**
-     * Get || int
-     *
-     * @return  Money
-     */ 
-    public function getDiscount()
-    {
-        return $this->discount;
-    }
-
-    /**
-     * Set || int
-     *
-     * @param  Money | null $discount  || int
-     *
-     * @return  self
-     */ 
-    public function setDiscount($discount)
-    {
-        $this->discount = $discount;
-
-        return $this;
-    }
-
-
-    /**
-     * Get || int
-     *
-     * @return  self
-     */ 
-    public function getPromo()
-    {
-        return $this->promo;
-    }
-
-    /**
-     * Set
-     *
-     * @param Product | null  $promo
-     *
-     * @return  self
-     */ 
-    public function setPromo($promo)
-    {
-        $this->promo = $promo;
-
-        return $this;
-    }
-
-    /**
-     * Get || ImgView
-     *
-     * @return  ImageModel
-     */ 
-    public function getInnerImage()
-    {
-        return $this->innerImage;
-    }
-
-    /**
-     * Set || ImgView
-     *
-     * @param  ImageModel | null  $innerImage 
-     *
-     * @return  self
-     */ 
-    public function setInnerImage($innerImage)
-    {
-        $this->innerImage = $innerImage;
-
-        return $this;
-    }
-
-
-    /**
-     * Get the value of isFeature
-     *
-     * @return  bool
-     */ 
-    public function getIsFeature()
-    {
-        return $this->isFeature;
-    }
-
-    /**
-     * Set the value of isFeature
-     *
-     * @param  bool  $isFeature
-     *
-     * @return  self
-     */ 
-    public function setIsFeature(bool $isFeature)
-    {
-        $this->isFeature = $isFeature;
-
-        return $this;
-    }
-
-    /**
      * Get the value of oldMoney
      *
      * @return  Money
@@ -450,170 +139,229 @@ AwareKeepInterface
     /**
      * Set the value of oldMoney
      *
-     * @param  Money | null  $oldMoney
+     * @param  Money  $oldMoney
      *
      * @return  self
      */ 
-    public function setOldMoney($oldMoney)
+    public function setOldMoney(Money $oldMoney)
     {
         $this->oldMoney = $oldMoney;
 
         return $this;
     }
 
-
     /**
-     * Get the value of description
+     * Get the value of tax
      *
-     * @return  string
+     * @return  Money
      */ 
-    public function getDescription()
+    public function getTax()
     {
-        return $this->description;
+        return $this->tax;
     }
 
     /**
-     * Set the value of description
+     * Set the value of tax
      *
-     * @param  string  $description
+     * @param  Money  $tax
      *
      * @return  self
      */ 
-    public function setDescription(string $description)
+    public function setTax(Money $tax)
     {
-        $this->description = $description;
-
-        return $this;
-    }
-
-        /**
-     * Get the value of script
-     *
-     * @return  string
-     */ 
-    public function impact(self $product,string $method)
-    {
-        $self = $this;
-
-        $path = $this->getScript().".php";
-
-        if(file_exists($path)){
-
-            return include($path);
-
-        }
-    }
-
-    /**
-     * Get the value of script
-     *
-     * @return  string
-     */ 
-    public function getScript()
-    {
-        return $this->script;
-    }
-
-    /**
-     * Set the value of script
-     *
-     * @param  string  $script
-     *
-     * @return  self
-     */ 
-    public function setScript(string $script)
-    {
-        $this->script = $script;
-
-        return $this;
-    }
-
-    public function __toArray() {
-        return array_merge(parent::__toArray(),[
-            self::MONEY => $this->getMoney(),
-            self::OLDMONEY => $this->getOldMoney(),
-            self::INNERIMAGE => $this->getInstallment(),
-            self::PROMO => $this->getPromo(),
-            self::DISCOUNT => $this->getDiscount(),
-            self::ISNEW => $this->getIsNew(),
-            self::ISFEATURE => $this->getIsFeature(),
-            self::IMAGE => $this->getImage(),
-            self::UNTRAIMAGE => $this->getUntraImage(),
-            self::INNERIMAGE => $this->getInnerImage(),
-            self::RATINGS => $this->getRatings(),
-            self::DESCRIPTION => $this->getDescription(),
-            self::SCRIPT => $this->getScript(),
-        ]);
-    }
-
-    /**
-     * Get || ImgView
-     *
-     * @return  ImageModel
-     */ 
-    public function getUntraImage()
-    {
-        return $this->untraImage;
-    }
-
-    /**
-     * Set || ImgView
-     *
-     * @param  ImageModel  $untraImage  || ImgView
-     *
-     * @return  self
-     */ 
-    public function setUntraImage($untraImage)
-    {
-        $this->untraImage = $untraImage;
+        $this->tax = $tax;
 
         return $this;
     }
 
     /**
-     * Get the value of isMonopoly
+     * Get the value of updatedAt
+     *
+     * @return  DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of type
+     *
+     * @return  string
+     */ 
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the value of type
+     *
+     * @param  string  $type
+     *
+     * @return  self
+     */ 
+    public function setType(string $type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of category
+     *
+     * @return  Category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @param  Category  $category
+     *
+     * @return  self
+     */ 
+    public function setCategory(Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of slug
+     *
+     * @return  string
+     */ 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @param  string  $slug
+     *
+     * @return  self
+     */ 
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of availableForPurchase
      *
      * @return  bool
      */ 
-    public function getIsMonopoly()
+    public function getAvailableForPurchase()
     {
-        return $this->isMonopoly;
+        return $this->availableForPurchase;
     }
 
     /**
-     * Set the value of isMonopoly
+     * Set the value of availableForPurchase
      *
-     * @param  bool  $isMonopoly
+     * @param  bool  $availableForPurchase
      *
      * @return  self
      */ 
-    public function setIsMonopoly(bool $isMonopoly)
+    public function setAvailableForPurchase(bool $availableForPurchase)
     {
-        $this->isMonopoly = $isMonopoly;
+        $this->availableForPurchase = $availableForPurchase;
 
         return $this;
     }
 
     /**
-     * Get the value of ratings
+     * Get the value of defaultVariant
      *
-     * @return  string[]
+     * @return  Product
      */ 
-    public function getRatings()
+    public function getDefaultVariant()
     {
-        return $this->ratings;
+        return $this->defaultVariant;
     }
 
     /**
-     * Set the value of ratings
+     * Set the value of defaultVariant
      *
-     * @param  string[]  $ratings
+     * @param  Product  $defaultVariant
      *
      * @return  self
      */ 
-    public function setRatings($ratings)
+    public function setDefaultVariant(Product $defaultVariant)
     {
-        $this->ratings = $ratings;
+        $this->defaultVariant = $defaultVariant;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of variants
+     *
+     * @return  ProductStorage
+     */ 
+    public function getVariants()
+    {
+        return $this->variants;
+    }
+
+    /**
+     * Set the value of variants
+     *
+     * @param  ProductStorage  $variants
+     *
+     * @return  self
+     */ 
+    public function setVariants(ProductStorage $variants)
+    {
+        $this->variants = $variants;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of logo
+     *
+     * @return  Image
+     */ 
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * Set the value of logo
+     *
+     * @param  Image  $logo
+     *
+     * @return  self
+     */ 
+    public function setLogo(Image $logo)
+    {
+        $this->logo = $logo;
 
         return $this;
     }

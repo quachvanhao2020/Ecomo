@@ -1,10 +1,13 @@
 <?php
 namespace Ecomo\Identity;
+
 use Ecomo\Address;
 use Ecomo\Orders\Order;
 use Identimo\User;
+use Ecomo\Orders\Storage\OrderStorage;
 
 class Customer extends User{
+
     const DEFAULTSHIPPINGADDRESS = "defaultShippingAddress";
     const DEFAULTBILLINGADDRESS = "defaultBillingAddress";
     const ORDERS = "orders";
@@ -19,7 +22,7 @@ class Customer extends User{
     }
 
     /**
-     * @var Order[]
+     * @var OrderStorage
      */
     protected $orders;
 
@@ -81,10 +84,11 @@ class Customer extends User{
         return $this;
     }
 
+
     /**
      * Get the value of orders
      *
-     * @return  Order[]
+     * @return  OrderStorage
      */ 
     public function getOrders()
     {
@@ -94,11 +98,11 @@ class Customer extends User{
     /**
      * Set the value of orders
      *
-     * @param  Order[]  $orders
+     * @param  OrderStorage  $orders
      *
      * @return  self
      */ 
-    public function setOrders($orders)
+    public function setOrders(OrderStorage $orders)
     {
         $this->orders = $orders;
 
