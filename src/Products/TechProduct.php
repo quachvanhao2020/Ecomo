@@ -151,4 +151,28 @@ class TechProduct extends ProductSocietyXX{
 
         return $this;
     }
+
+    /**
+     * Get the value of phoneParameterHtml
+     *
+     * @return  string
+     */ 
+    public function getPhoneParameterHtml()
+    {
+        return $this->phoneParameterHtml;
+    }
+
+    /**
+     * Set the value of phoneParameterHtml
+     *
+     * @param  string  $phoneParameterHtml
+     *
+     * @return  self
+     */ 
+    public function setPhoneParameterHtml(string $phoneParameterHtml)
+    {
+        $this->phoneParameterHtml = $phoneParameterHtml;
+
+        return $this;
+    }
 }

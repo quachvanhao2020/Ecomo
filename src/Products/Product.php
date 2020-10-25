@@ -5,7 +5,7 @@ use YPHP\EntityFertility;
 use YPHP\DateTime;
 use Ecomo\Categorys\Category;
 use Ecomo\Money;
-use Ecomo\Tech\Storage\ProductStorage;
+use Ecomo\Products\Storage\ProductStorage;
 use YPHP\Model\Media\Image;
 
 
@@ -335,10 +335,10 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setVariants(ProductStorage $variants)
+    public function setVariants($variants)
     {
+        if($variants instanceof ProductStorage)
         $this->variants = $variants;
-
         return $this;
     }
 

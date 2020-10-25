@@ -2,6 +2,7 @@
 namespace Ecomo\Products;
 use Societymo\Storage\RatingStorage;
 use Ecomo\Products\Storage\ProductStorage;
+use Ecomo\Products\Storage\ProductSocietyStorage;
 
 class ProductSociety extends ProductX{
     
@@ -109,4 +110,5 @@ class ProductSociety extends ProductX{
 
         return $this;
     }
+
 }

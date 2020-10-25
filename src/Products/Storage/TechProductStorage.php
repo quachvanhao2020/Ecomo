@@ -5,7 +5,7 @@ use YPHP\ArrayObject;
 use Ecomo\Products\TechProduct;
 use Ecomo\Products\Storage\Iterator\TechProductIterator;
 
-class TechProductStorage extends ArrayObject{
+class TechProductStorage extends ProductSocietyXXStorage{
 
 
     /**
