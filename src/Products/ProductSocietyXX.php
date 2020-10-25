@@ -1,5 +1,5 @@
 <?php
-namespace Ecomo\ECommerce;
+namespace Ecomo\Products;
 
 use YPHP\Entity;
 use Ecomo\ECommerce\Storage\ProductStorage;
@@ -11,10 +11,10 @@ use YPHP\Model\Media\Image;
 use YPHP\Model\Media\Video;
 use YPHP\Model\Media\Image360;
 
-class ProductSocietyXX extends ProductSociety{
+class ProductSocietyXX extends ProductSocietyX{
 
     const VIDEO = "video";
-    const Image360 = "Image360";
+    const IMAGE360 = "image360";
     const COMBOS = "combos";
     const CHARACTERISTICS = "characteristics";
     const ARTICLE = "article";
@@ -24,7 +24,7 @@ class ProductSocietyXX extends ProductSociety{
     public function __toArray() {
         return array_merge(parent::__toArray(),[
             self::VIDEO => $this->getVideo(),
-            self::Image360 => $this->getImage360(),
+            self::IMAGE360 => $this->getImage360(),
             self::COMBOS => $this->getCombos(),
             self::CHARACTERISTICS => $this->getCharacteristics(),
             self::ARTICLE => $this->getArticle(),
@@ -56,7 +56,7 @@ class ProductSocietyXX extends ProductSociety{
     protected $combos;
 
     
-        /**
+    /**
      * 
      *
      * @var Characteristics

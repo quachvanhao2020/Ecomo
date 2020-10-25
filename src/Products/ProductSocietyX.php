@@ -1,6 +1,8 @@
 <?php
 namespace Ecomo\Products;
+
 use Societymo\Communication;
+
 class ProductSocietyX extends ProductSociety{
 
     const COMMUNICATION = "communication";

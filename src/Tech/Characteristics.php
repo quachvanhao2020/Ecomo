@@ -1,8 +1,10 @@
 <?php
 namespace Ecomo\Tech;
+
+use YPHP\Entity;
 use YPHP\Model\Media\Storage\ImageStorage;
 
-class Characteristics{
+class Characteristics extends Entity{
 
         /**
      * 

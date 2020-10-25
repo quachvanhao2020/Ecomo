@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo\Products;
 use Societymo\Storage\RatingStorage;
-use Ecomo\Tech\Storage\ProductStorage;
+use Ecomo\Products\Storage\ProductStorage;
 
 class ProductSociety extends ProductX{
     

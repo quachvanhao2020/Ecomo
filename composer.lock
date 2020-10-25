@@ -51,12 +51,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/Societymo.git",
-                "reference": "6a40d7af23a4b99a506fe0d7091bf2906adf5ca9"
+                "reference": "8724d0904571aee8274c7f8106470e909bd75eac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/Societymo/zipball/6a40d7af23a4b99a506fe0d7091bf2906adf5ca9",
-                "reference": "6a40d7af23a4b99a506fe0d7091bf2906adf5ca9",
+                "url": "https://api.github.com/repos/quachvanhao2020/Societymo/zipball/8724d0904571aee8274c7f8106470e909bd75eac",
+                "reference": "8724d0904571aee8274c7f8106470e909bd75eac",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "source": "https://github.com/quachvanhao2020/Societymo/tree/main",
                 "issues": "https://github.com/quachvanhao2020/Societymo/issues"
             },
-            "time": "2020-10-24T02:34:40+00:00"
+            "time": "2020-10-25T04:44:37+00:00"
         },
         {
             "name": "hao/yphp",
@@ -92,12 +92,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/YPHP.git",
-                "reference": "0b23a0cb01ec37cb9e1d7127291452720e3e1ac4"
+                "reference": "94cea81e3e58b6458a9e9bf1d9cd545c13fd2ef7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/0b23a0cb01ec37cb9e1d7127291452720e3e1ac4",
-                "reference": "0b23a0cb01ec37cb9e1d7127291452720e3e1ac4",
+                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/94cea81e3e58b6458a9e9bf1d9cd545c13fd2ef7",
+                "reference": "94cea81e3e58b6458a9e9bf1d9cd545c13fd2ef7",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "source": "https://github.com/quachvanhao2020/YPHP/tree/main",
                 "issues": "https://github.com/quachvanhao2020/YPHP/issues"
             },
-            "time": "2020-10-24T01:09:10+00:00"
+            "time": "2020-10-25T00:12:35+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
