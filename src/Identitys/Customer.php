@@ -1,5 +1,5 @@
 <?php
-namespace Ecomo\Identity;
+namespace Ecomo\Identitys;
 
 use Ecomo\Address;
 use Ecomo\Orders\Order;

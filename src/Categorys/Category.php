@@ -3,7 +3,7 @@ namespace Ecomo\Categorys;
 
 use YPHP\EntityFertility;
 use YPHP\Model\Media\Image;
-use Ecomo\Tech\Storage\ProductStorage;
+use Ecomo\Products\Storage\ProductStorage;
 
 class Category extends EntityFertility{
     const IMAGE = "image";
