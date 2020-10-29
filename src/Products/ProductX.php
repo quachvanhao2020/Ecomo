@@ -317,7 +317,7 @@ AwareKeepInterface
 
     public function __toArray() {
         return array_merge(parent::__toArray(),[
-            self::INNERIMAGE => $this->getInstallment(),
+            self::INSTALLMENT => $this->getInstallment(),
             self::PROMO => $this->getPromo(),
             self::DISCOUNT => $this->getDiscount(),
             self::ISNEW => $this->getIsNew(),
@@ -326,6 +326,19 @@ AwareKeepInterface
             self::INNERIMAGE => $this->getInnerImage(),
             self::DESCRIPTION => $this->getDescription(),
         ]);
+    }
+
+    public function __arrayTo(array $array)
+    {
+        parent::__arrayTo($array);
+        $this->setInnerImage($array[self::INNERIMAGE]);
+        $this->setPromo($array[self::PROMO]);
+        $this->setDiscount($array[self::DISCOUNT]);
+        $this->setIsNew($array[self::ISNEW]);
+        $this->setIsFeature($array[self::ISFEATURE]);
+        $this->setUntraImage($array[self::UNTRAIMAGE]);
+        $this->setInstallment($array[self::INSTALLMENT]);
+        $this->setDescription($array[self::DESCRIPTION]);
     }
 
     /**

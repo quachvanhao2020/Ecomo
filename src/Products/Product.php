@@ -40,6 +40,22 @@ class Product extends EntityFertility{
         ]);
     }
 
+    public function __arrayTo(array $array)
+    {
+        parent::__arrayTo($array);
+        $this->setLogo($array[self::LOGO]);
+        $this->setSlug($array[self::SLUG]);
+        $this->setMoney($array[self::MONEY]);
+        $this->setOldMoney($array[self::OLDMONEY]);        
+        $this->setTax($array[self::TAX]);
+        $this->setUpdatedAt($array[self::UPDATEDAT]);
+        $this->setType($array[self::TYPE]);
+        $this->setCategory($array[self::CATEGORY]);        
+        $this->setDefaultVariant($array[self::DEFAULTVARIANT]);
+        $this->setAvailableForPurchase($array[self::AVAILABLEFORPURCHASE]);
+        $this->setVariants($array[self::VARIANTS]);
+    }
+
     /**
      * 
      *

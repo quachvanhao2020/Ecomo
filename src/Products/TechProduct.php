@@ -21,6 +21,15 @@ class TechProduct extends ProductSocietyXX{
             self::CAMERAIMAGEREPRESENT => $this->getCameraImageRepresent(),
         ]);
     }
+
+    public function __arrayTo(array $array)
+    {
+        parent::__arrayTo($array);
+        $this->setPhoneParameter($array[self::PHONEPARAMETER]);
+        $this->setImageRepresent($array[self::IMAGEREPRESENT]);
+        $this->setVideos($array[self::VIDEOS]);
+        $this->setCameraImageRepresent($array[self::CAMERAIMAGEREPRESENT]);
+    }
             /**
      * 
      *

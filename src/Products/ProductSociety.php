@@ -19,6 +19,14 @@ class ProductSociety extends ProductX{
         ]);
     }
 
+    public function __arrayTo(array $array)
+    {
+        parent::__arrayTo($array);
+        $this->setScript($array[self::SCRIPT]);
+        $this->setRatings($array[self::RATINGS]);
+        $this->setCompares($array[self::COMPARES]);
+    }
+
         /**
      * 
      *

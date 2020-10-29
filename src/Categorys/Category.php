@@ -6,9 +6,23 @@ use YPHP\Model\Media\Image;
 use Ecomo\Products\Storage\ProductStorage;
 
 class Category extends EntityFertility{
-    const IMAGE = "image";
+    const LOGO = "logo";
     const SLUG = "slug";
 
+    public function __toArray()
+    {
+        return array_merge(parent::__toArray(),[
+            self::LOGO => $this->getLogo(),
+            self::SLUG => $this->getSlug(),
+        ]);
+    }
+
+    public function __arrayTo(array $array)
+    {
+        parent::__arrayTo($array);
+        $this->setLogo($array[self::LOGO]);
+        $this->setSlug($array[self::SLUG]);
+    }
     /**
      * 
      *
