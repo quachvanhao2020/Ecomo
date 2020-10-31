@@ -17,7 +17,7 @@ class Category extends EntityFertility{
         ]);
     }
 
-    public function __arrayTo(array $array)
+    public function __arrayTo($array)
     {
         parent::__arrayTo($array);
         $logo = @$array[self::LOGO];
