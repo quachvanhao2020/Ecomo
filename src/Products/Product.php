@@ -43,17 +43,34 @@ class Product extends EntityFertility{
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setLogo($array[self::LOGO]);
-        $this->setSlug($array[self::SLUG]);
-        $this->setMoney($array[self::MONEY]);
-        $this->setOldMoney($array[self::OLDMONEY]);        
-        $this->setTax($array[self::TAX]);
-        $this->setUpdatedAt($array[self::UPDATEDAT]);
-        $this->setType($array[self::TYPE]);
-        $this->setCategory($array[self::CATEGORY]);        
-        $this->setDefaultVariant($array[self::DEFAULTVARIANT]);
-        $this->setAvailableForPurchase($array[self::AVAILABLEFORPURCHASE]);
-        $this->setVariants($array[self::VARIANTS]);
+        $logo = @$array[self::LOGO];
+        if(!$logo instanceof Image){
+            $logo = \tran($logo,Image::class);
+        }
+        $this->setLogo($logo);
+        $this->setSlug(@$array[self::SLUG]);
+        $money = @$array[self::MONEY];
+        if(!$money instanceof Money){
+            $money = \tran($money,Money::class);
+        }
+        $this->setMoney($money);
+        $money = @$array[self::OLDMONEY];
+        if(!$money instanceof Money){
+            $money = \tran($money,Money::class);
+        }
+        $this->setOldMoney($money);        
+        $this->setTax(@$array[self::TAX]);
+        $this->setUpdatedAt(@$array[self::UPDATEDAT]);
+        $this->setType(@$array[self::TYPE]);
+
+        $category = $array[self::CATEGORY];
+        if(!$category instanceof Category){
+            $category = \tran($category,Category::class);
+        }
+        $this->setCategory($category);  
+        $this->setDefaultVariant(@$array[self::DEFAULTVARIANT]);
+        $this->setAvailableForPurchase(@$array[self::AVAILABLEFORPURCHASE]);
+        $this->setVariants(@$array[self::VARIANTS]);
     }
 
     /**
@@ -135,7 +152,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setMoney(Money $money)
+    public function setMoney(Money $money = null)
     {
         $this->money = $money;
 
@@ -159,7 +176,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setOldMoney(Money $oldMoney)
+    public function setOldMoney(Money $oldMoney = null)
     {
         $this->oldMoney = $oldMoney;
 
@@ -183,7 +200,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setTax(Money $tax)
+    public function setTax(Money $tax = null)
     {
         $this->tax = $tax;
 
@@ -207,7 +224,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setUpdatedAt(DateTime $updatedAt)
+    public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
@@ -231,7 +248,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setType(string $type)
+    public function setType(string $type = null)
     {
         $this->type = $type;
 
@@ -255,7 +272,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setCategory(Category $category)
+    public function setCategory(Category $category = null)
     {
         $this->category = $category;
 
@@ -279,7 +296,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setSlug(string $slug)
+    public function setSlug(string $slug = null)
     {
         $this->slug = $slug;
 
@@ -303,7 +320,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setAvailableForPurchase(bool $availableForPurchase)
+    public function setAvailableForPurchase(bool $availableForPurchase = false)
     {
         $this->availableForPurchase = $availableForPurchase;
 
@@ -327,7 +344,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setDefaultVariant(Product $defaultVariant)
+    public function setDefaultVariant(Product $defaultVariant = null)
     {
         $this->defaultVariant = $defaultVariant;
 
@@ -375,7 +392,7 @@ class Product extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setLogo(Image $logo)
+    public function setLogo(Image $logo = null)
     {
         $this->logo = $logo;
 
