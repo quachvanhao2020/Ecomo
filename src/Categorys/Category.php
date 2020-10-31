@@ -20,8 +20,14 @@ class Category extends EntityFertility{
     public function __arrayTo(array $array)
     {
         parent::__arrayTo($array);
-        $this->setLogo($array[self::LOGO]);
-        $this->setSlug($array[self::SLUG]);
+        $logo = @$array[self::LOGO];
+        if($logo instanceof Image){
+
+        }else if(is_array($logo)){
+            $logo = \obj_to($logo,new Image());
+        }
+        $this->setLogo($logo);
+        $this->setSlug(@$array[self::SLUG]);
     }
     /**
      * 

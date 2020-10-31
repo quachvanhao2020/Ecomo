@@ -32,11 +32,11 @@ abstract class BaseTechProductFactory implements ContainerFactoryInterface{
      * @param TechProduct $entity
      * @return bool
      */
-    public abstract function update(string $id,$entity);
+    public abstract function update($id,$entity);
         /**
      * @param string $id Identifier of the entry to look for.
      * 
      * @return bool
      */
-    public abstract function delete(string $id);
+    public abstract function delete($id);
 }
