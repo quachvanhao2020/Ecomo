@@ -1,18 +1,8 @@
 <?php
 namespace Ecomo\Filter;
+use YPHP\Entity;
 
-use JsonSerializable;
-use Ecomo\Entity;
-
-class EntityFilter extends Entity implements 
-JsonSerializable
-{
-    public function jsonSerialize() {
-        return [
-            self::ID => $this->getId(),
-        ];
-    }
-
+class EntityFilter extends Entity {
     public function filter($items)
     {
         return $items;

@@ -1,9 +1,9 @@
 <?php
-namespace UltimateModel\Filter;
+namespace Ecomo\Filter;
 
 class KeepFilter extends EntityFilter
 {
-            /**
+    /**
      * 
      *
      * @var string
@@ -15,34 +15,19 @@ class KeepFilter extends EntityFilter
         $this->setFlag($flag);
     }
 
-    public static function propertySpecificity(){
-        
-    }
-
     public function filter($items)
     {
         $newItems = [];
-
         if(is_array($items)){
-
             foreach ($items as $key => $value) {
-                
                 if($value instanceof AwareKeepInterface){
-
                     if($value->keepReason($this->getFlag())){
-
                         $newItems[] = $value;
-
                     };
-
                 }
-
             }
-
         }
-
         return $newItems;
-
     }
 
 

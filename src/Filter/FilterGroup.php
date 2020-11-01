@@ -1,25 +1,8 @@
 <?php
-namespace UltimateModel\Filter;
+namespace Ecomo\Filter;
 
-use JsonSerializable;
-use UltimateModel\Filter\Traits\FilterTrait;
-use UltimateModel\Filter\Traits\FilterTraitInterface;
-
-class FilterGroup implements
-FilterTraitInterface, 
-JsonSerializable
+class FilterGroup 
 {
-    public function __debugInfo() {
-        return $this->jsonSerialize();
-    }
 
-    public function jsonSerialize() {
-        return [
-            self::FILTERS => $this->getFilters(),
-            self::FILTERACTIVES => $this->getFilterActives(),
-        ];
-    }
-
-    use FilterTrait;
 
 }

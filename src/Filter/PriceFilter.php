@@ -1,19 +1,10 @@
 <?php
 namespace Ecomo\Filter;
 use Ecomo\Money;
-
-class MoneyHelper{
-    public function compare(){
-
-    }
-}
+use Ecomo\MoneyHelper;
 
 class PriceFilter extends EntityFilter
 {
-
-    public static function propertySpecificity(){
-        
-    }
 
     const MIN = "min";
     const MAX = "max";
@@ -37,8 +28,8 @@ class PriceFilter extends EntityFilter
      */
     protected $max;
 
-    public function jsonSerialize() {
-        return array_merge_recursive(parent::jsonSerialize(),[
+    public function __toArray() {
+        return array_merge_recursive(parent::__toArray(),[
             self::MIN => $this->getMin(),
             self::MAX => $this->getMax(),
         ]);
@@ -53,12 +44,11 @@ class PriceFilter extends EntityFilter
 
     public function filter($items)
     {
-        if(is_array($items)){
+        if(is_iterable($items)){
             $moneyHelper = $this->getMoneyHelper();
             foreach ($items as $key => $item) {
                 if($item instanceof AwarePriceInterface){
                     if(($this->getMin() == null || $moneyHelper->compare($item->getPrice(),$this->getMin()) == -1)  && ($this->getMax() == null || $moneyHelper->compare($item->getPrice(),$this->getMax()) == 1)){
-
 
                     }else{
                         unset($items[$key]);

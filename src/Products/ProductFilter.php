@@ -1,8 +1,16 @@
 <?php
 namespace Ecomo\Products;
 
+use ArrayAccess;
 use YPHP\Entity;
 use YPHP\FilterInputInterface;
+use Ecomo\Paginator;
+use Laminas\Paginator\Adapter;
+use Ecomo\Products\Storage\ProductStorage;
+use YPHP\Attribute;
+use YPHP\AttributeFilter;
+use YPHP\Storage\AttributeStorage;
+use Ecomo\Filter\PriceFilter;
 
 class ProductFilter extends Entity implements FilterInputInterface{
     
@@ -17,6 +25,7 @@ class ProductFilter extends Entity implements FilterInputInterface{
     const OTHERS = "others";
     const CLEARCACHE = "clearCache";
     const COUNT = "count";
+    const PRICEFILTERS = "priceFilters";
 
     public function __toArray() {
         return array_merge(parent::__toArray(),[
@@ -33,6 +42,11 @@ class ProductFilter extends Entity implements FilterInputInterface{
             self::CLEARCACHE => $this->getClearCache(),
         ]);
     }
+
+    /**
+     * @var PriceFilter[]
+     */
+    protected $priceFilters;
 
     /**
      * @var string
@@ -309,4 +323,63 @@ class ProductFilter extends Entity implements FilterInputInterface{
         return $this;
     }
 
+    /**
+     * @param ProductStorage $products
+     * @return mixed
+     */
+    function filter(ArrayAccess &$products){
+        $self = $this;
+        $paginator =new Paginator();
+        $paginator->setCallableAdapter(function(Paginator $paginator) use($self){
+            //$paginator->setPageRange($filter->getPageIndex());
+            $paginator->setCurrentPageNumber($self->getPageIndex());
+            $paginator->setItemCountPerPage($self->getPageSize());
+        });
+        $paginator->setAdapter(new Adapter\ArrayAdapter($products->getStorage()));
+        $products->setStorage($paginator->getCurrentItems());
+        if($property = $this->getProperty()){
+            $propertys = explode(",",$property);
+            $attributes = new AttributeStorage();
+            foreach ($propertys as $property) {
+                $attributes->append(new Attribute($property));
+            }
+            $filter = new AttributeFilter();
+            $filter->setAttributes($attributes);
+            $filter->filter($products);
+        }
+        if($priceRange = $this->getPriceRange()){
+            $priceFilters = $this->getPriceFilters();
+            if(isset($priceFilters[$priceRange])){
+                $filter = $priceFilters[$priceRange];
+                if($filter instanceof PriceFilter){
+                    $filter->filter($products);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Get the value of priceFilters
+     *
+     * @return  PriceFilter[]
+     */ 
+    public function getPriceFilters()
+    {
+        return $this->priceFilters;
+    }
+
+    /**
+     * Set the value of priceFilters
+     *
+     * @param  PriceFilter[]  $priceFilters
+     *
+     * @return  self
+     */ 
+    public function setPriceFilters($priceFilters)
+    {
+        $this->priceFilters = $priceFilters;
+
+        return $this;
+    }
 }

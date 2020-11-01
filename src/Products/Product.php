@@ -4,12 +4,14 @@ namespace Ecomo\Products;
 use YPHP\EntityFertility;
 use YPHP\DateTime;
 use Ecomo\Categorys\Category;
+use Ecomo\Filter\AwarePriceInterface;
 use Ecomo\Money;
 use Ecomo\Products\Storage\ProductStorage;
+use YPHP\EntityFertilityFinal;
 use YPHP\Model\Media\Image;
 use YPHP\Storage\AttributeStorage;
 
-class Product extends EntityFertility{
+class Product extends EntityFertilityFinal implements AwarePriceInterface{
 
     const LOGO = "logo";
     const MONEY = "money";
@@ -22,7 +24,10 @@ class Product extends EntityFertility{
     const AVAILABLEFORPURCHASE = "availableForPurchase";
     const DEFAULTVARIANT = "defaultVaxriant";
     const VARIANTS = "variants";
-    const ATTRIBUTES = "attributes";
+
+    public function getPrice(){
+        return $this->getMoney();
+    }
 
     public function __toArray()
     {
@@ -38,7 +43,6 @@ class Product extends EntityFertility{
             self::AVAILABLEFORPURCHASE => $this->getAvailableForPurchase(),
             self::DEFAULTVARIANT => $this->getDefaultVariant(),
             self::VARIANTS => $this->getVariants(),
-            self::ATTRIBUTES => $this->getAttributes(),
         ]);
     }
 
@@ -73,12 +77,6 @@ class Product extends EntityFertility{
         $this->setDefaultVariant(@$array[self::DEFAULTVARIANT]);
         $this->setAvailableForPurchase(@$array[self::AVAILABLEFORPURCHASE]);
         $this->setVariants(@$array[self::VARIANTS]);
-
-        $attributes = @$array[self::ATTRIBUTES];
-        if(is_array($attributes)){
-            $attributes = \tran($attributes,AttributeStorage::class);
-        }
-        $this->setAttributes($attributes);
     }
 
     /**
@@ -407,30 +405,6 @@ class Product extends EntityFertility{
     public function setLogo(Image $logo = null)
     {
         $this->logo = $logo;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of attributes
-     *
-     * @return  AttributeStorage|null
-     */ 
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * Set the value of attributes
-     *
-     * @param  AttributeStorage|null  $attributes
-     *
-     * @return  self
-     */ 
-    public function setAttributes(AttributeStorage $attributes = null)
-    {
-        $this->attributes = $attributes;
 
         return $this;
     }
