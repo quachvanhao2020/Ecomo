@@ -92,12 +92,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/YPHP.git",
-                "reference": "c8963fb3e62bfbdcf43750b456b8f6e1c9a14755"
+                "reference": "90a9711e2284b56df4a00826dce4b280fadec16d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/c8963fb3e62bfbdcf43750b456b8f6e1c9a14755",
-                "reference": "c8963fb3e62bfbdcf43750b456b8f6e1c9a14755",
+                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/90a9711e2284b56df4a00826dce4b280fadec16d",
+                "reference": "90a9711e2284b56df4a00826dce4b280fadec16d",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,7 @@
                 "source": "https://github.com/quachvanhao2020/YPHP/tree/main",
                 "issues": "https://github.com/quachvanhao2020/YPHP/issues"
             },
-            "time": "2020-10-28T12:30:04+00:00"
+            "time": "2020-11-01T02:36:12+00:00"
         },
         {
             "name": "netresearch/jsonmapper",

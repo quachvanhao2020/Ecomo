@@ -22,13 +22,13 @@ class TechProduct extends ProductSocietyXX{
         ]);
     }
 
-    public function __arrayTo(array $array)
+    public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setPhoneParameter($array[self::PHONEPARAMETER]);
-        $this->setImageRepresent($array[self::IMAGEREPRESENT]);
-        $this->setVideos($array[self::VIDEOS]);
-        $this->setCameraImageRepresent($array[self::CAMERAIMAGEREPRESENT]);
+        $this->setPhoneParameter(@$array[self::PHONEPARAMETER]);
+        $this->setImageRepresent(@$array[self::IMAGEREPRESENT]);
+        $this->setVideos(@$array[self::VIDEOS]);
+        $this->setCameraImageRepresent(@$array[self::CAMERAIMAGEREPRESENT]);
     }
             /**
      * 
@@ -82,7 +82,7 @@ class TechProduct extends ProductSocietyXX{
      *
      * @return  self
      */ 
-    public function setPhoneParameter(PhoneParameter $phoneParameter)
+    public function setPhoneParameter(PhoneParameter $phoneParameter = null)
     {
         $this->phoneParameter = $phoneParameter;
 
@@ -106,7 +106,7 @@ class TechProduct extends ProductSocietyXX{
      *
      * @return  self
      */ 
-    public function setVideos(VideoStorage $videos)
+    public function setVideos(VideoStorage $videos = null)
     {
         $this->videos = $videos;
 
@@ -130,7 +130,7 @@ class TechProduct extends ProductSocietyXX{
      *
      * @return  self
      */ 
-    public function setCameraImageRepresent(ImageRepresent $cameraImageRepresent)
+    public function setCameraImageRepresent(ImageRepresent $cameraImageRepresent = null)
     {
         $this->cameraImageRepresent = $cameraImageRepresent;
 
@@ -154,7 +154,7 @@ class TechProduct extends ProductSocietyXX{
      *
      * @return  self
      */ 
-    public function setImageRepresent(ImageRepresent $imageRepresent)
+    public function setImageRepresent(ImageRepresent $imageRepresent = null)
     {
         $this->imageRepresent = $imageRepresent;
 
@@ -178,7 +178,7 @@ class TechProduct extends ProductSocietyXX{
      *
      * @return  self
      */ 
-    public function setPhoneParameterHtml(string $phoneParameterHtml)
+    public function setPhoneParameterHtml(string $phoneParameterHtml = null)
     {
         $this->phoneParameterHtml = $phoneParameterHtml;
 

@@ -33,16 +33,16 @@ class ProductSocietyXX extends ProductSocietyX{
         ]);
     }
 
-    public function __arrayTo(array $array)
+    public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setVideo($array[self::VIDEO]);
-        $this->setImage360($array[self::IMAGE360]);
-        $this->setCombos($array[self::COMBOS]);
-        $this->setCharacteristics($array[self::CHARACTERISTICS]);
-        $this->setArticle($array[self::ARTICLE]);
-        $this->setNewsList($array[self::NEWSLIST]);
-        $this->setAccessories($array[self::ACCESSORIES]);
+        $this->setVideo(@$array[self::VIDEO]);
+        $this->setImage360(@$array[self::IMAGE360]);
+        $this->setCombos(@$array[self::COMBOS]);
+        $this->setCharacteristics(@$array[self::CHARACTERISTICS]);
+        $this->setArticle(@$array[self::ARTICLE]);
+        $this->setNewsList(@$array[self::NEWSLIST]);
+        $this->setAccessories(@$array[self::ACCESSORIES]);
     }
 
 

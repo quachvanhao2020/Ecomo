@@ -19,12 +19,21 @@ class ProductSociety extends ProductX{
         ]);
     }
 
-    public function __arrayTo(array $array)
+    public function __arrayTo($array)
     {
         parent::__arrayTo($array);
         $this->setScript($array[self::SCRIPT]);
-        $this->setRatings($array[self::RATINGS]);
-        $this->setCompares($array[self::COMPARES]);
+        $ratings = @$array[self::RATINGS];
+        if(is_array($ratings)){
+            $ratings = \tran($ratings,RatingStorage::class);
+        }
+        $this->setRatings($ratings);
+
+        $compares = @$array[self::COMPARES];
+        if(is_array($compares)){
+            $compares = \tran($compares,ProductStorage::class);
+        }
+        $this->setCompares($compares);
     }
 
         /**

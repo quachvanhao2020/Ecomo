@@ -14,10 +14,10 @@ class ProductSocietyX extends ProductSociety{
         ]);
     }
 
-    public function __arrayTo(array $array)
+    public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setCommunication($array[self::COMMUNICATION]);
+        $this->setCommunication(@$array[self::COMMUNICATION]);
     }
     /**
      * 
@@ -43,7 +43,7 @@ class ProductSocietyX extends ProductSociety{
      *
      * @return  self
      */ 
-    public function setCommunication(Communication $communication)
+    public function setCommunication(Communication $communication = null)
     {
         $this->communication = $communication;
 
