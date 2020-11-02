@@ -66,7 +66,11 @@ class SortFilter extends EntityFilter implements SortingInputInterface
         }
     }
 
-    public function filter($items)
+            /**
+     * @param ArrayAccess $result
+     * @return mixed
+     */
+    public function filter(ArrayAccess &$items)
     {
         usort($items,[$this,"cmp"]);
         return $items;

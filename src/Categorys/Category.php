@@ -8,26 +8,23 @@ use Ecomo\Products\Storage\ProductStorage;
 class Category extends EntityFertility{
     const LOGO = "logo";
     const SLUG = "slug";
+    const PRODUCTS = "products";
 
     public function __toArray()
     {
         return array_merge(parent::__toArray(),[
             self::LOGO => $this->getLogo(),
             self::SLUG => $this->getSlug(),
+            self::PRODUCTS => $this->getProducts(),
         ]);
     }
 
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $logo = @$array[self::LOGO];
-        if($logo instanceof Image){
-
-        }else if(is_array($logo)){
-            $logo = \obj_to($logo,new Image());
-        }
-        $this->setLogo($logo);
+        $this->setLogo(\tran(@$array[self::LOGO],Image::class));
         $this->setSlug(@$array[self::SLUG]);
+        $this->setProducts(\tran(@$array[self::PRODUCTS],ProductStorage::class));
     }
     /**
      * 
@@ -91,8 +88,10 @@ class Category extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setProducts(ProductStorage $products)
+    public function setProducts($products = null)
     {
+        if(!$products instanceof ProductStorage) return;
+
         $this->products = $products;
 
         return $this;

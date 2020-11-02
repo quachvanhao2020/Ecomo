@@ -332,12 +332,11 @@ class ProductFilter extends Entity implements FilterInputInterface{
         $self = $this;
         $paginator =new Paginator();
         $paginator->setCallableAdapter(function(Paginator $paginator) use($self){
-            //$paginator->setPageRange($filter->getPageIndex());
             $paginator->setCurrentPageNumber($self->getPageIndex());
             $paginator->setItemCountPerPage($self->getPageSize());
         });
         $paginator->setAdapter(new Adapter\ArrayAdapter($products->getStorage()));
-        $products->setStorage($paginator->getCurrentItems());
+        $products->setStorage((array)$paginator->getCurrentItems());
         if($property = $this->getProperty()){
             $propertys = explode(",",$property);
             $attributes = new AttributeStorage();

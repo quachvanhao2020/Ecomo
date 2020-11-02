@@ -7,6 +7,7 @@ use YPHP\Model\Media\ImageRepresent;
 use YPHP\Model\Media\Storage\VideoStorage;
 
 class TechProduct extends ProductSocietyXX{
+
     const PHONEPARAMETER = "phoneParameter";
     const IMAGEREPRESENT = "imageRepresent";
     const CAMERAIMAGEREPRESENT = "cameraImageRepresent";
@@ -161,27 +162,4 @@ class TechProduct extends ProductSocietyXX{
         return $this;
     }
 
-    /**
-     * Get the value of phoneParameterHtml
-     *
-     * @return  string
-     */ 
-    public function getPhoneParameterHtml()
-    {
-        return $this->phoneParameterHtml;
-    }
-
-    /**
-     * Set the value of phoneParameterHtml
-     *
-     * @param  string  $phoneParameterHtml
-     *
-     * @return  self
-     */ 
-    public function setPhoneParameterHtml(string $phoneParameterHtml = null)
-    {
-        $this->phoneParameterHtml = $phoneParameterHtml;
-
-        return $this;
-    }
 }

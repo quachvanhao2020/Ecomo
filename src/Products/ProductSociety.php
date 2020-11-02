@@ -43,17 +43,8 @@ class ProductSociety extends ProductX{
     {
         parent::__arrayTo($array);
         $this->setScript(@$array[self::SCRIPT]);
-        $ratings = @$array[self::RATINGS];
-        if(is_array($ratings)){
-            $ratings = \tran($ratings,RatingStorage::class);
-        }
-        $this->setRatings($ratings);
-
-        $compares = @$array[self::COMPARES];
-        if(is_array($compares)){
-            $compares = \tran($compares,ProductStorage::class);
-        }
-        $this->setCompares($compares);
+        $this->setRatings(\tran(@$array[self::RATINGS],RatingStorage::class));
+        $this->setCompares(\tran(@$array[self::COMPARES],ProductStorage::class));
         $this->setRatingAverage(@$array[self::RATINGAVERAGE]);
         $this->setRatingCount(@$array[self::RATINGCOUNT]);
     }
@@ -105,7 +96,7 @@ class ProductSociety extends ProductX{
      *
      * @return  self
      */ 
-    public function setCompares(ProductStorage $compares)
+    public function setCompares($compares)
     {
         $this->compares = $compares;
 
@@ -129,7 +120,7 @@ class ProductSociety extends ProductX{
      *
      * @return  self
      */ 
-    public function setRatings(RatingStorage $ratings)
+    public function setRatings(RatingStorage $ratings = null)
     {
         $this->ratings = $ratings;
 
@@ -153,7 +144,7 @@ class ProductSociety extends ProductX{
      *
      * @return  self
      */ 
-    public function setScript(string $script)
+    public function setScript(string $script = null)
     {
         $this->script = $script;
 
@@ -178,7 +169,7 @@ class ProductSociety extends ProductX{
      *
      * @return  self
      */ 
-    public function setRatingAverage(int $ratingAverage)
+    public function setRatingAverage(int $ratingAverage = null)
     {
         $this->ratingAverage = $ratingAverage;
 
@@ -202,7 +193,7 @@ class ProductSociety extends ProductX{
      *
      * @return  self
      */ 
-    public function setRatingCount(int $ratingCount)
+    public function setRatingCount(int $ratingCount = null)
     {
         $this->ratingCount = $ratingCount;
 

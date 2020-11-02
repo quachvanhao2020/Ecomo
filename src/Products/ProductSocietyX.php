@@ -17,7 +17,7 @@ class ProductSocietyX extends ProductSociety{
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setCommunication(@$array[self::COMMUNICATION]);
+        $this->setCommunication(\tran(@$array[self::COMMUNICATION],Communication::class));
     }
     /**
      * 

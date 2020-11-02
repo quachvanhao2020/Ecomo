@@ -7,7 +7,6 @@ use Ecomo\Products\Storage\Iterator\ProductIterator;
 
 class ProductStorage extends ArrayObject{
 
-
     /**
      * Create a new iterator from an ArrayObject instance
      *

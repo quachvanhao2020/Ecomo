@@ -1,7 +1,6 @@
 <?php
 namespace Ecomo;
-use Brick\Money\Currency;
-use YPHP\BaseEntity;
+
 use YPHP\Entity;
 use Brick\Money\Money as BaseMoney;
 
@@ -24,7 +23,7 @@ class Money extends Entity{
         $this->setCurrency(@$array[self::CURRENCY]);
     }
 
-    public function __construct(int $price,string $currency = "USD", $id = null)
+    public function __construct(int $price = 0,string $currency = "USD", $id = null)
     {
         parent::__construct($id);
         $this->price = $price;

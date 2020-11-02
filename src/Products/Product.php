@@ -3,6 +3,7 @@ namespace Ecomo\Products;
 
 use YPHP\DateTime;
 use Ecomo\Categorys\Category;
+use Ecomo\Filter\AwareKeepInterface;
 use Ecomo\Filter\AwarePriceInterface;
 use Ecomo\Filter\AwareSortFilterInterface;
 use Ecomo\Products\Storage\ProductStorage;
@@ -12,7 +13,11 @@ use YPHP\Storage\AttributeStorage;
 use Ecomo\Filter\SortFilter;
 use Ecomo\Money;
 
-class Product extends EntityFertilityFinal implements AwarePriceInterface,AwareSortFilterInterface{
+class Product extends EntityFertilityFinal implements 
+ProductInterface,
+AwarePriceInterface,
+AwareSortFilterInterface
+{
 
     const LOGO = "logo";
     const MONEY = "money";
@@ -45,6 +50,7 @@ class Product extends EntityFertilityFinal implements AwarePriceInterface,AwareS
         }
     }
 
+
     public function __toArray()
     {
         return array_merge(parent::__toArray(),[
@@ -65,31 +71,14 @@ class Product extends EntityFertilityFinal implements AwarePriceInterface,AwareS
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $logo = @$array[self::LOGO];
-        if(!$logo instanceof Image){
-            $logo = \tran($logo,Image::class);
-        }
-        $this->setLogo($logo);
+        $this->setLogo(\tran(@$array[self::LOGO],Image::class));
         $this->setSlug(@$array[self::SLUG]);
-        $money = @$array[self::MONEY];
-        if(!$money instanceof Money){
-            $money = \tran($money,Money::class);
-        }
-        $this->setMoney($money);
-        $money = @$array[self::OLDMONEY];
-        if(!$money instanceof Money){
-            $money = \tran($money,Money::class);
-        }
-        $this->setOldMoney($money);        
+        $this->setMoney(\tran(@$array[self::MONEY],Money::class));
+        $this->setOldMoney(\tran(@$array[self::OLDMONEY],Money::class));        
         $this->setTax(@$array[self::TAX]);
         $this->setUpdatedAt(@$array[self::UPDATEDAT]);
         $this->setType(@$array[self::TYPE]);
-
-        $category = $array[self::CATEGORY];
-        if(!$category instanceof Category){
-            $category = \tran($category,Category::class);
-        }
-        $this->setCategory($category);  
+        $this->setCategory(\tran($array[self::CATEGORY],Category::class));  
         $this->setDefaultVariant(@$array[self::DEFAULTVARIANT]);
         $this->setAvailableForPurchase(@$array[self::AVAILABLEFORPURCHASE]);
         $this->setVariants(@$array[self::VARIANTS]);
@@ -346,7 +335,7 @@ class Product extends EntityFertilityFinal implements AwarePriceInterface,AwareS
      *
      * @return  self
      */ 
-    public function setAvailableForPurchase(bool $availableForPurchase = false)
+    public function setAvailableForPurchase(bool $availableForPurchase = null)
     {
         $this->availableForPurchase = $availableForPurchase;
 

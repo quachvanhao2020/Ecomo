@@ -36,12 +36,12 @@ class ProductSocietyXX extends ProductSocietyX{
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setVideo(@$array[self::VIDEO]);
-        $this->setImage360(@$array[self::IMAGE360]);
+        $this->setVideo(\tran(@$array[self::VIDEO],Video::class));
+        $this->setImage360(\tran(@$array[self::IMAGE360],Image360::class));
         $this->setCombos(@$array[self::COMBOS]);
-        $this->setCharacteristics(@$array[self::CHARACTERISTICS]);
-        $this->setArticle(@$array[self::ARTICLE]);
-        $this->setNewsList(@$array[self::NEWSLIST]);
+        $this->setCharacteristics(\tran(@$array[self::CHARACTERISTICS],Characteristics::class));
+        $this->setArticle(\tran(@$array[self::ARTICLE],ArticleXX::class));
+        $this->setNewsList(\tran(@$array[self::NEWSLIST],NewsList::class));
         $this->setAccessories(@$array[self::ACCESSORIES]);
     }
 
@@ -114,7 +114,7 @@ class ProductSocietyXX extends ProductSocietyX{
      *
      * @return  self
      */ 
-    public function setVideo(Video $video)
+    public function setVideo(Video $video = null)
     {
         $this->video = $video;
 
@@ -138,7 +138,7 @@ class ProductSocietyXX extends ProductSocietyX{
      *
      * @return  self
      */ 
-    public function setImage360(Image360 $Image360)
+    public function setImage360(Image360 $Image360 = null)
     {
         $this->Image360 = $Image360;
 
@@ -162,7 +162,7 @@ class ProductSocietyXX extends ProductSocietyX{
      *
      * @return  self
      */ 
-    public function setCharacteristics(Characteristics $characteristics)
+    public function setCharacteristics(Characteristics $characteristics = null)
     {
         $this->characteristics = $characteristics;
 
@@ -217,22 +217,6 @@ class ProductSocietyXX extends ProductSocietyX{
         }
         $this->combos = $combos;
         return $this;
-    }
-
-    public function refJsonSerialize($array){
-
-        foreach ($array as $key => $value) {
-            
-            if($value instanceof Entity){
-
-                $array[$key] = get_class($value)."-".$value->getId();
- 
-            }
-
-        }
-
-        return $array;
-
     }
 
     /**

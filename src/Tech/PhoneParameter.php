@@ -6,6 +6,11 @@ use Ecomo\Storage\TechEntityStorage;
 class PhoneParameter{
 
     /**
+     * @var string
+     */
+    protected $html;
+
+    /**
      * 
      *
      * @var TechEntityStorage
@@ -38,4 +43,28 @@ class PhoneParameter{
         return $this;
     }
 
+
+    /**
+     * Get the value of html
+     *
+     * @return  string
+     */ 
+    public function getHtml()
+    {
+        return $this->html;
+    }
+
+    /**
+     * Set the value of html
+     *
+     * @param  string  $html
+     *
+     * @return  self
+     */ 
+    public function setHtml(string $html = null)
+    {
+        $this->html = $html;
+
+        return $this;
+    }
 }

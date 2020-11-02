@@ -1,5 +1,6 @@
 <?php
 namespace Ecomo\Filter;
+use ArrayAccess;
 
 class KeepFilter extends EntityFilter
 {
@@ -15,7 +16,11 @@ class KeepFilter extends EntityFilter
         $this->setFlag($flag);
     }
 
-    public function filter($items)
+    /**
+     * @param ArrayAccess $result
+     * @return mixed
+     */
+    public function filter(ArrayAccess &$items)
     {
         $newItems = [];
         if(is_array($items)){

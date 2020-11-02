@@ -7,11 +7,8 @@ use Ecomo\Filter\AwareKeepInterface;
 use Ecomo\Filter\SortFilter;
 use Ecomo\Money;
 use YPHP\Model\Media\Image;
-use Societymo\Storage\RatingStorage;
 
 class ProductX extends Product implements 
-AwarePriceInterface,
-AwareSortFilterInterface,
 AwareKeepInterface 
 {
 
@@ -90,10 +87,6 @@ AwareKeepInterface
      */
     protected $description;
 
-    public function getPrice(){
-        return $this->getMoney();
-    }
-
     public function keepReason($flag = ''){
         switch ($flag) {
             case self::ISNEW:           
@@ -112,7 +105,6 @@ AwareKeepInterface
     public function getWeight($flag = SortFilter::MOST){
         switch ($flag) {
             case SortFilter::MOST:
-                //return count($this->getRatings());
                 break;
             case SortFilter::SORT_DESC:
 
@@ -143,7 +135,7 @@ AwareKeepInterface
      *
      * @return  self
      */ 
-    public function setInstallment(int $installment)
+    public function setInstallment(int $installment = null)
     {
         $this->installment = $installment;
 
@@ -168,7 +160,7 @@ AwareKeepInterface
      *
      * @return  self
      */ 
-    public function setIsNew(bool $isNew)
+    public function setIsNew(bool $isNew = null)
     {
         $this->isNew = $isNew;
 
@@ -190,11 +182,11 @@ AwareKeepInterface
     /**
      * Set || int
      *
-     * @param  Money | null $discount  || int
+     * @param  Money $discount 
      *
      * @return  self
      */ 
-    public function setDiscount($discount)
+    public function setDiscount(Money $discount = null)
     {
         $this->discount = $discount;
 
@@ -215,11 +207,11 @@ AwareKeepInterface
     /**
      * Set
      *
-     * @param Product | null  $promo
+     * @param Product  $promo
      *
      * @return  self
      */ 
-    public function setPromo($promo)
+    public function setPromo(Product $promo = null)
     {
         $this->promo = $promo;
 
@@ -239,11 +231,11 @@ AwareKeepInterface
     /**
      * Set 
      *
-     * @param  Image | null  $innerImage 
+     * @param  Image $innerImage 
      *
      * @return  self
      */ 
-    public function setInnerImage($innerImage)
+    public function setInnerImage(Image $innerImage = null)
     {
         $this->innerImage = $innerImage;
 
@@ -268,7 +260,7 @@ AwareKeepInterface
      *
      * @return  self
      */ 
-    public function setIsFeature(bool $isFeature)
+    public function setIsFeature(bool $isFeature = null)
     {
         $this->isFeature = $isFeature;
 
@@ -294,25 +286,11 @@ AwareKeepInterface
      *
      * @return  self
      */ 
-    public function setDescription(string $description)
+    public function setDescription(string $description = null)
     {
         $this->description = $description;
 
         return $this;
-    }
-
-        /**
-     * Get the value of script
-     *
-     * @return  string
-     */ 
-    public function impact(self $product,string $method)
-    {
-        $self = $this;
-        $path = "$this->getScript()".".php";
-        if(file_exists($path)){
-            return include($path);
-        }
     }
 
     public function __toArray() {
@@ -331,12 +309,12 @@ AwareKeepInterface
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setInnerImage(@$array[self::INNERIMAGE]);
+        $this->setInnerImage(\tran(@$array[self::INNERIMAGE],Image::class));
         $this->setPromo(@$array[self::PROMO]);
         $this->setDiscount(@$array[self::DISCOUNT]);
         $this->setIsNew(@$array[self::ISNEW]);
         $this->setIsFeature(@$array[self::ISFEATURE]);
-        $this->setUntraImage(@$array[self::UNTRAIMAGE]);
+        $this->setUntraImage(\tran(@$array[self::UNTRAIMAGE],Image::class));
         $this->setInstallment(@$array[self::INSTALLMENT]);
         $this->setDescription(@$array[self::DESCRIPTION]);
     }
