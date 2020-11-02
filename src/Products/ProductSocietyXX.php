@@ -128,7 +128,7 @@ class ProductSocietyXX extends ProductSocietyX{
      */ 
     public function getImage360()
     {
-        return $this->Image360;
+        return $this->image360;
     }
 
     /**

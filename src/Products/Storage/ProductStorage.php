@@ -31,7 +31,7 @@ class ProductStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  Product[]  $storage
+     * @param  \Ecomo\Products\Product[]  $storage
      *
      * @return  self
      */ 
