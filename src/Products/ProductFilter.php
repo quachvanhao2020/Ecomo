@@ -40,6 +40,7 @@ class ProductFilter extends Entity implements FilterInputInterface{
             self::OTHERS => $this->getOthers(),
             self::COUNT => $this->getCount(),
             self::CLEARCACHE => $this->getClearCache(),
+            self::PRICEFILTERS => $this->getPriceFilters(),
         ]);
     }
 

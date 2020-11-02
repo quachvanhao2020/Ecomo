@@ -1,10 +1,10 @@
 <?php
 namespace Ecomo\Filter;
 
-use JsonSerializable;
+use YPHP\SortingInputInterface;
+use ArrayAccess;
 
-class SortFilter extends EntityFilter implements 
-JsonSerializable
+class SortFilter extends EntityFilter implements SortingInputInterface
 {
 
     const SORT_ASC = "SORT_ASC";
@@ -12,8 +12,8 @@ JsonSerializable
     const MOST = "MOST";
     const ORDER = "order";
 
-    public function jsonSerialize() {
-        return array_merge_recursive(parent::jsonSerialize(),[
+    public function __toArray() {
+        return array_merge(parent::__toArray(),[
             self::ORDER => $this->getOrder(),
         ]);
     }
@@ -70,6 +70,14 @@ JsonSerializable
     {
         usort($items,[$this,"cmp"]);
         return $items;
+    }
+
+        /**
+     * @param ArrayAccess $result
+     * @return mixed
+     */
+    public function sort(ArrayAccess &$result){
+        return $this->filter($result);
     }
 
     public static function array_sort($array, $on, $order=SORT_ASC)

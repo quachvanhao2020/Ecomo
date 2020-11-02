@@ -20,7 +20,8 @@
         "hao/yphp": "dev-main",
         "hao/identimo": "dev-main",
         "hao/societymo": "dev-main",
-        "laminas/laminas-paginator": "^2.9"
+        "laminas/laminas-paginator": "^2.9",
+        "brick/money": "^0.5.0"
     },
     "repositories": [
         {"type": "vcs", "url": "https://github.com/quachvanhao2020/YPHP.git"},

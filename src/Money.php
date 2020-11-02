@@ -1,47 +1,55 @@
 <?php
 namespace Ecomo;
+use Brick\Money\Currency;
+use YPHP\BaseEntity;
+use YPHP\Entity;
+use Brick\Money\Money as BaseMoney;
 
-use JsonSerializable;
-use Ecomo\Nation;
-
-class Money implements
-JsonSerializable
-{
+class Money extends Entity{
 
     const PRICE = "price";
-    const NATION = "nation";
+    const CURRENCY = "currency";
+
+    public function __toArray()
+    {
+        return array_merge(parent::__toArray(),[
+            self::PRICE => $this->getPrice(),
+            self::CURRENCY => $this->getCurrency(),
+        ]);
+    }
+
+    public function __arrayTo($array)
+    {
+        $this->setPrice(@$array[self::PRICE]);
+        $this->setCurrency(@$array[self::CURRENCY]);
+    }
+
+    public function __construct(int $price,string $currency = "USD", $id = null)
+    {
+        parent::__construct($id);
+        $this->price = $price;
+        $this->currency = $currency;
+        $this->update();
+    }
+
+    protected function update(){
+        $this->money = BaseMoney::of($this->price,$this->currency);
+    }
 
     /**
-     * 
-     *
+     * @var \Brick\Money\Money
+     */
+    protected $money;
+
+    /**
      * @var int
      */
     protected $price;
 
-    /**
-     * 
-     *
-     * @var Nation
+        /**
+     * @var string
      */
-    protected $nation;
-
-    public function jsonSerialize() {
-        return [
-            self::PRICE => $this->getPrice(),
-            self::NATION => $this->getNation(),
-        ];
-    }
-
-    public static function stringToMoney($string){
-        $money = new Money();
-        $money -> setPrice(intval(str_replace(".","",$string)));
-        return $money;
-    }
-
-    public function __construct($price = 0)
-    {
-        $this->setPrice($price);     
-    }
+    protected $currency;
 
     /**
      * Get the value of price
@@ -51,16 +59,6 @@ JsonSerializable
     public function getPrice()
     {
         return $this->price;
-    }
-
-        /**
-     * Get the value of price
-     *
-     * @return  int
-     */ 
-    public function getTextPrice()
-    {
-        return $this->getPrice()."D";
     }
 
     /**
@@ -73,31 +71,59 @@ JsonSerializable
     public function setPrice(int $price)
     {
         $this->price = $price;
+        $this->update();
 
         return $this;
     }
 
     /**
-     * Get the value of nation
+     * Get the value of currency
      *
-     * @return  Nation
+     * @return  string
      */ 
-    public function getNation()
+    public function getCurrency()
     {
-        return $this->nation;
+        return $this->currency;
     }
 
     /**
-     * Set the value of nation
+     * Set the value of currency
      *
-     * @param  Nation  $nation
+     * @param  string  $currency
      *
      * @return  self
      */ 
-    public function setNation(Nation $nation = null)
+    public function setCurrency(string $currency)
     {
-        $this->nation = $nation;
+        $this->currency = $currency;
+        $this->update();
 
+        return $this;
+    }
+
+    /**
+     * Get the value of money
+     *
+     * @return  BaseMoney
+     */ 
+    public function getMoney()
+    {
+        return $this->money;
+    }
+
+
+    /**
+     * Set the value of money
+     *
+     * @param  \Brick\Money\Money  $money
+     *
+     * @return  self
+     */ 
+    public function setMoney(\Brick\Money\Money $money)
+    {
+        $this->money = $money;
+        $this->price = $money->getAmount()->toInt();
+        $this->currency = $money->getCurrency()->getCurrencyCode();
         return $this;
     }
 }

@@ -1,10 +1,17 @@
 <?php
-
-use Ecomo\Entity;
-
 require_once "vendor/autoload.php";
+use Brick\Math\RoundingMode;
+use Brick\Money\CurrencyConverter;
+use Ecomo\ExchangeRateProviderHelper;
+use Ecomo\MoneyHelper;
+use Ecomo\Products\Product;
+use Ecomo\Money;
 
-$entity = new Entity(22);
+$product = new Product();
+$money = new Money("20000", 'VND');
+$product->setMoney($money);
+$product->setOldMoney($money);
 
-var_dump(arr($entity)["id"]);
-var_dump(std($entity)->id);
+//$money = MoneyHelper::getCurrencyConverter()->convert($money, 'USD', RoundingMode::UP);echo $money->formatTo('vi_VN');
+
+var_dump(json_encode($product));

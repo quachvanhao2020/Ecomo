@@ -1,17 +1,18 @@
 <?php
 namespace Ecomo\Products;
 
-use YPHP\EntityFertility;
 use YPHP\DateTime;
 use Ecomo\Categorys\Category;
 use Ecomo\Filter\AwarePriceInterface;
-use Ecomo\Money;
+use Ecomo\Filter\AwareSortFilterInterface;
 use Ecomo\Products\Storage\ProductStorage;
 use YPHP\EntityFertilityFinal;
 use YPHP\Model\Media\Image;
 use YPHP\Storage\AttributeStorage;
+use Ecomo\Filter\SortFilter;
+use Ecomo\Money;
 
-class Product extends EntityFertilityFinal implements AwarePriceInterface{
+class Product extends EntityFertilityFinal implements AwarePriceInterface,AwareSortFilterInterface{
 
     const LOGO = "logo";
     const MONEY = "money";
@@ -27,6 +28,21 @@ class Product extends EntityFertilityFinal implements AwarePriceInterface{
 
     public function getPrice(){
         return $this->getMoney();
+    }
+
+    public function getWeight($flag = SortFilter::MOST){
+        switch ($flag) {
+            case SortFilter::MOST:
+                //return count($this->get());
+                break;
+            case SortFilter::SORT_DESC:
+            case SortFilter::SORT_ASC:
+                return $this->getMoney()->getPrice();
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 
     public function __toArray()
