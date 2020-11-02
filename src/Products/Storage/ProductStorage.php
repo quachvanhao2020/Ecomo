@@ -20,7 +20,7 @@ class ProductStorage extends ArrayObject{
     /**
      * Get the value of storage
      *
-     * @return  Product[]
+     * @return  \Ecomo\Products\Product[]
      */ 
     public function getStorage()
     {

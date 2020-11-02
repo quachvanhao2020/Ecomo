@@ -21,7 +21,7 @@ class ProductSocietyXXStorage extends ProductSocietyXStorage{
     /**
      * Get the value of storage
      *
-     * @return  ProductSocietyXX[]
+     * @return  \Ecomo\Products\ProductSocietyXX[]
      */ 
     public function getStorage()
     {

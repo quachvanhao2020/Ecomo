@@ -32,7 +32,7 @@ class TechProductStorage extends ProductSocietyXXStorage{
     /**
      * Set the value of storage
      *
-     * @param  TechProduct[]  $storage
+     * @param  \Ecomo\Products\TechProduct[]  $storage
      *
      * @return  self
      */ 

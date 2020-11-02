@@ -32,7 +32,7 @@ class Customerstorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  Customer[]  $storage
+     * @param  \Ecomo\Identitys\Customer[]  $storage
      *
      * @return  self
      */ 

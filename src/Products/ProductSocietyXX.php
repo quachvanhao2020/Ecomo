@@ -2,7 +2,6 @@
 namespace Ecomo\Products;
 
 use YPHP\Entity;
-use Ecomo\ECommerce\Storage\ProductStorage;
 use Ecomo\Tech\Characteristics;
 use Societymo\NewsList;
 use Societymo\ArticleXX;
@@ -10,6 +9,7 @@ use Ecomo\Products\ProductSociety;
 use YPHP\Model\Media\Image;
 use YPHP\Model\Media\Video;
 use YPHP\Model\Media\Image360;
+use Ecomo\Products\Storage\ProductStorage;
 
 class ProductSocietyXX extends ProductSocietyX{
 
@@ -257,7 +257,7 @@ class ProductSocietyXX extends ProductSocietyX{
     /**
      * Set the value of accessories
      *
-     * @param  string  $accessories
+     * @param  \Ecomo\Products\Storage\ProductStorage  $accessories
      *
      * @return  self
      */ 

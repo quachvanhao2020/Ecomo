@@ -85,7 +85,7 @@ AwareSortFilterInterface
     }
 
     /**
-     * @var AttributeStorage|null
+     * @var \YPHP\Storage\AttributeStorage
      */
     protected $attributes;
     /**
@@ -379,7 +379,7 @@ AwareSortFilterInterface
     /**
      * Set the value of variants
      *
-     * @param  ProductStorage  $variants
+     * @param  \Ecomo\Products\Storage\ProductStorage  $variants
      *
      * @return  self
      */ 

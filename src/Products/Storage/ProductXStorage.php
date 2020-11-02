@@ -21,7 +21,7 @@ class ProductXStorage extends ProductStorage{
     /**
      * Get the value of storage
      *
-     * @return  ProductX[]
+     * @return  \Ecomo\Products\ProductX[]
      */ 
     public function getStorage()
     {

@@ -2,7 +2,7 @@
 namespace Ecomo\Orders\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Order;
+use Ecomo\Orders\Order;
 use Ecomo\Orders\Storage\Iterator\OrderIterator;
 
 class OrderStorage extends ArrayObject{
@@ -32,7 +32,7 @@ class OrderStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  Order[]  $storage
+     * @param  \Ecomo\Orders\Order[]  $storage
      *
      * @return  self
      */ 

@@ -32,7 +32,7 @@ class CategoryStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  Category[]  $storage
+     * @param  \Ecomo\Categorys\Category[]  $storage
      *
      * @return  self
      */ 

@@ -92,7 +92,7 @@ class ProductSociety extends ProductX{
     /**
      * Set the value of compares
      *
-     * @param  ProductStorage  $compares
+     * @param  \Ecomo\Products\Storage\ProductStorage  $compares
      *
      * @return  self
      */ 
@@ -116,7 +116,7 @@ class ProductSociety extends ProductX{
     /**
      * Set the value of ratings
      *
-     * @param  RatingStorage  $ratings
+     * @param  \Societymo\Storage\RatingStorage  $ratings
      *
      * @return  self
      */ 

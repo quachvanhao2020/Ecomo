@@ -6,6 +6,7 @@ use YPHP\Model\Media\Image;
 use Ecomo\Products\Storage\ProductStorage;
 
 class Category extends EntityFertility{
+
     const LOGO = "logo";
     const SLUG = "slug";
     const PRODUCTS = "products";
@@ -84,7 +85,7 @@ class Category extends EntityFertility{
     /**
      * Set the value of products
      *
-     * @param  ProductStorage  $products
+     * @param  \Ecomo\Products\Storage\ProductStorage  $products
      *
      * @return  self
      */ 

@@ -32,7 +32,7 @@ class MoneyStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  Money[]  $storage
+     * @param  \Ecomo\Money[]  $storage
      *
      * @return  self
      */ 

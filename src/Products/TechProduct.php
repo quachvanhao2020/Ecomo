@@ -103,7 +103,7 @@ class TechProduct extends ProductSocietyXX{
     /**
      * Set the value of videos
      *
-     * @param  VideoStorage  $videos
+     * @param  \YPHP\Model\Media\Storage\VideoStorage  $videos
      *
      * @return  self
      */ 
