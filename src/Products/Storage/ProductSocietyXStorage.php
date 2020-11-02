@@ -32,7 +32,7 @@ class ProductSocietyXStorage extends ProductSocietyStorage{
     /**
      * Set the value of storage
      *
-     * @param  ProductSocietyX[]  $storage
+     * @param  \Ecomo\Products\ProductSocietyX[]  $storage
      *
      * @return  self
      */ 
