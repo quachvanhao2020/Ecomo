@@ -138,9 +138,9 @@ class ProductSocietyXX extends ProductSocietyX{
      *
      * @return  self
      */ 
-    public function setImage360(Image360 $Image360 = null)
+    public function setImage360(Image360 $image360 = null)
     {
-        $this->Image360 = $Image360;
+        $this->image360 = $image360;
 
         return $this;
     }
@@ -212,9 +212,6 @@ class ProductSocietyXX extends ProductSocietyX{
      */ 
     public function setCombos($combos)
     {
-        foreach ($combos as $key => $combo) {
-            //$combo->impact($this->getProduct(),__METHOD__);
-        }
         $this->combos = $combos;
         return $this;
     }

@@ -2,8 +2,23 @@
 namespace Ecomo\Tech;
 
 use Ecomo\Storage\TechEntityStorage;
+use YPHP\SerializableInterface;
 
-class PhoneParameter{
+class PhoneParameter implements SerializableInterface{
+
+    const HTML = "html";
+
+    function __toStd(){
+        return (object)$this->__toArray();
+    }
+    function __toArray(){
+        return [
+            self::HTML => $this->getHtml(),
+        ];
+    }
+    public function jsonSerialize(){
+        return $this->__toArray();
+    }
 
     /**
      * @var string
