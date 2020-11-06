@@ -1,26 +1,27 @@
 <?php
-namespace Ecomo\Products\Storage;
+namespace Ecomo\Orders\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Products\Product;
-use Ecomo\Products\Storage\Iterator\ProductIterator;
+use Ecomo\Orders\OrderStatistical;
+use Ecomo\Orders\Storage\Iterator\OrderStatisticalIterator;
 
-class ProductStorage extends ArrayObject implements ProductStorageInterface{
+class OrderStatisticalStorage extends ArrayObject{
+
 
     /**
      * Create a new iterator from an ArrayObject instance
      *
-     * @return ProductIterator
+     * @return OrderStatisticalIterator
      */
     public function getIterator()
     {
-        return new ProductIterator($this->storage);
+        return new OrderStatisticalIterator($this->storage);
     }
 
     /**
      * Get the value of storage
      *
-     * @return  \Ecomo\Products\Product[]
+     * @return  OrderStatistical[]
      */ 
     public function getStorage()
     {
@@ -31,7 +32,7 @@ class ProductStorage extends ArrayObject implements ProductStorageInterface{
     /**
      * Set the value of storage
      *
-     * @param  \Ecomo\Products\Product[]  $storage
+     * @param  \Ecomo\Orders\OrderStatistical[]  $storage
      *
      * @return  self
      */ 

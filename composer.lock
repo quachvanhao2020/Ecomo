@@ -116,16 +116,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/Identimo.git",
-                "reference": "c6050047f19bce32416e9928e80f35dfa7272f41"
+                "reference": "58eb4b8f838c15fdda8f091c048c19b0c1f2f349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/Identimo/zipball/c6050047f19bce32416e9928e80f35dfa7272f41",
-                "reference": "c6050047f19bce32416e9928e80f35dfa7272f41",
+                "url": "https://api.github.com/repos/quachvanhao2020/Identimo/zipball/58eb4b8f838c15fdda8f091c048c19b0c1f2f349",
+                "reference": "58eb4b8f838c15fdda8f091c048c19b0c1f2f349",
                 "shasum": ""
             },
             "require": {
                 "hao/yphp": "dev-main",
+                "laminas/laminas-authentication": "^2.7",
+                "laminas/laminas-permissions-acl": "^2.7",
+                "laminas/laminas-permissions-rbac": "^3.0",
                 "php": ">=5.3"
             },
             "type": "library",
@@ -147,7 +150,7 @@
                 "source": "https://github.com/quachvanhao2020/Identimo/tree/main",
                 "issues": "https://github.com/quachvanhao2020/Identimo/issues"
             },
-            "time": "2020-10-28T12:40:38+00:00"
+            "time": "2020-11-06T02:59:59+00:00"
         },
         {
             "name": "hao/societymo",
@@ -155,12 +158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/Societymo.git",
-                "reference": "ec746d0e828542441cf7ace7fc936d6ea36b6844"
+                "reference": "6997d6557f061982e77ee01c8dbb888a82ba0c4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/Societymo/zipball/ec746d0e828542441cf7ace7fc936d6ea36b6844",
-                "reference": "ec746d0e828542441cf7ace7fc936d6ea36b6844",
+                "url": "https://api.github.com/repos/quachvanhao2020/Societymo/zipball/6997d6557f061982e77ee01c8dbb888a82ba0c4b",
+                "reference": "6997d6557f061982e77ee01c8dbb888a82ba0c4b",
                 "shasum": ""
             },
             "require": {
@@ -188,7 +191,7 @@
                 "source": "https://github.com/quachvanhao2020/Societymo/tree/main",
                 "issues": "https://github.com/quachvanhao2020/Societymo/issues"
             },
-            "time": "2020-10-28T12:49:56+00:00"
+            "time": "2020-11-03T05:29:59+00:00"
         },
         {
             "name": "hao/yphp",
@@ -196,12 +199,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/quachvanhao2020/YPHP.git",
-                "reference": "708e191472429aa1dc02a3884d7d901107d04f1f"
+                "reference": "f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/708e191472429aa1dc02a3884d7d901107d04f1f",
-                "reference": "708e191472429aa1dc02a3884d7d901107d04f1f",
+                "url": "https://api.github.com/repos/quachvanhao2020/YPHP/zipball/f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd",
+                "reference": "f67ba8ffe727b6a5fd5f7f3e519d1aec6603b8dd",
                 "shasum": ""
             },
             "require": {
@@ -239,7 +242,73 @@
                 "source": "https://github.com/quachvanhao2020/YPHP/tree/main",
                 "issues": "https://github.com/quachvanhao2020/YPHP/issues"
             },
-            "time": "2020-11-01T06:31:56+00:00"
+            "time": "2020-11-06T02:50:39+00:00"
+        },
+        {
+            "name": "laminas/laminas-authentication",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-authentication.git",
+                "reference": "53505e07858d243792b96be763456f786d953501"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-authentication/zipball/53505e07858d243792b96be763456f786d953501",
+                "reference": "53505e07858d243792b96be763456f786d953501",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-stdlib": "^3.2.1",
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "replace": {
+                "zendframework/zend-authentication": "self.version"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-crypt": "^2.6 || ^3.2.1",
+                "laminas/laminas-db": "^2.8.2",
+                "laminas/laminas-http": "^2.7",
+                "laminas/laminas-ldap": "^2.8",
+                "laminas/laminas-session": "^2.8",
+                "laminas/laminas-uri": "^2.5.2",
+                "laminas/laminas-validator": "^2.10.1",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2"
+            },
+            "suggest": {
+                "laminas/laminas-crypt": "Laminas\\Crypt component",
+                "laminas/laminas-db": "Laminas\\Db component",
+                "laminas/laminas-http": "Laminas\\Http component",
+                "laminas/laminas-ldap": "Laminas\\Ldap component",
+                "laminas/laminas-session": "Laminas\\Session component",
+                "laminas/laminas-uri": "Laminas\\Uri component",
+                "laminas/laminas-validator": "Laminas\\Validator component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7.x-dev",
+                    "dev-develop": "2.8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Authentication\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "provides an API for authentication and includes concrete authentication adapters for common use case scenarios",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "Authentication",
+                "laminas"
+            ],
+            "time": "2019-12-31T16:14:48+00:00"
         },
         {
             "name": "laminas/laminas-paginator",
@@ -311,6 +380,110 @@
                 }
             ],
             "time": "2020-09-10T14:55:55+00:00"
+        },
+        {
+            "name": "laminas/laminas-permissions-acl",
+            "version": "2.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-permissions-acl.git",
+                "reference": "d8cd35ed94eef5d3d2533af4a72cf1c2932084bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-permissions-acl/zipball/d8cd35ed94eef5d3d2533af4a72cf1c2932084bb",
+                "reference": "d8cd35ed94eef5d3d2533af4a72cf1c2932084bb",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^5.6 || ^7.0"
+            },
+            "replace": {
+                "zendframework/zend-permissions-acl": "^2.7.1"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "laminas/laminas-servicemanager": "^2.7.5 || ^3.0.3",
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.5"
+            },
+            "suggest": {
+                "laminas/laminas-servicemanager": "To support Laminas\\Permissions\\Acl\\Assertion\\AssertionManager plugin manager usage"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Permissions\\Acl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Provides a lightweight and flexible access control list (ACL) implementation for privileges management",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "acl",
+                "laminas"
+            ],
+            "funding": [
+                {
+                    "url": "https://funding.communitybridge.org/projects/laminas-project",
+                    "type": "community_bridge"
+                }
+            ],
+            "time": "2020-09-22T14:08:17+00:00"
+        },
+        {
+            "name": "laminas/laminas-permissions-rbac",
+            "version": "3.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laminas/laminas-permissions-rbac.git",
+                "reference": "82757287735fc5c3d437aa59de65d61fe7d6b16c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laminas/laminas-permissions-rbac/zipball/82757287735fc5c3d437aa59de65d61fe7d6b16c",
+                "reference": "82757287735fc5c3d437aa59de65d61fe7d6b16c",
+                "shasum": ""
+            },
+            "require": {
+                "laminas/laminas-zendframework-bridge": "^1.0",
+                "php": "^7.1"
+            },
+            "replace": {
+                "zendframework/zend-permissions-rbac": "self.version"
+            },
+            "require-dev": {
+                "laminas/laminas-coding-standard": "~1.0.0",
+                "phpunit/phpunit": "^7.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev",
+                    "dev-develop": "3.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laminas\\Permissions\\Rbac\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Provides a role-based access control management",
+            "homepage": "https://laminas.dev",
+            "keywords": [
+                "authorization",
+                "laminas",
+                "laminas-permssions-rbac",
+                "rbac"
+            ],
+            "time": "2019-12-31T17:37:57+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -424,16 +597,16 @@
         },
         {
             "name": "netresearch/jsonmapper",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweiske/jsonmapper.git",
-                "reference": "923d59d40e6468851166ca27f2ed705fd6003146"
+                "reference": "ba09f0e456d4f00cef84e012da5715625594407c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/923d59d40e6468851166ca27f2ed705fd6003146",
-                "reference": "923d59d40e6468851166ca27f2ed705fd6003146",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/ba09f0e456d4f00cef84e012da5715625594407c",
+                "reference": "ba09f0e456d4f00cef84e012da5715625594407c",
                 "shasum": ""
             },
             "require": {
@@ -466,7 +639,7 @@
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
-            "time": "2020-08-15T07:37:48+00:00"
+            "time": "2020-11-02T19:19:54+00:00"
         },
         {
             "name": "psr/container",
