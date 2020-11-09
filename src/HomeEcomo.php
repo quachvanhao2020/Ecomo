@@ -47,6 +47,8 @@ class HomeEcomo extends Entity{
      */ 
     public function getOrderStatistical()
     {
+        if(!$this->orderStatistical) $this->orderStatistical = new OrderStatistical();
+
         return $this->orderStatistical;
     }
 
@@ -71,6 +73,8 @@ class HomeEcomo extends Entity{
      */ 
     public function getProductStatistical()
     {
+        if(!$this->productStatistical) $this->productStatistical = new ProductStatistical();
+
         return $this->productStatistical;
     }
 
@@ -95,6 +99,8 @@ class HomeEcomo extends Entity{
      */ 
     public function getStaffStatistical()
     {
+        if(!$this->staffStatistical) $this->staffStatistical = new StaffStatistical();
+
         return $this->staffStatistical;
     }
 
@@ -119,6 +125,8 @@ class HomeEcomo extends Entity{
      */ 
     public function getActivities()
     {
+        if(!$this->activities) $this->activities = new ActivitieStorage();
+
         return $this->activities;
     }
 
