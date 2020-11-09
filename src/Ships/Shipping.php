@@ -20,6 +20,8 @@ class Shipping extends Entity{
      */ 
     public function getAmount()
     {
+        if(!$this->amount) $this->amount = new Money(0);
+
         return $this->amount;
     }
 
@@ -54,7 +56,7 @@ class Shipping extends Entity{
      *
      * @return  self
      */ 
-    public function setMethod(string $method)
+    public function setMethod(string $method = null)
     {
         $this->method = $method;
 

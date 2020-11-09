@@ -86,6 +86,8 @@ class OrderStatistical extends EntityStatistical{
      */ 
     public function getTotalRevenue()
     {
+        if(!$this->totalRevenue) $this->totalRevenue = new Money(0);
+
         return $this->totalRevenue;
     }
 

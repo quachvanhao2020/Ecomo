@@ -1,8 +1,8 @@
 <?php
 namespace Ecomo\Orders;
-use YPHP\BaseEnum;
+use YPHP\Enum;
 
-abstract class OrderStatus extends BaseEnum {
+class OrderStatus extends Enum {
     const CANCELED = "CANCELED";
     const DRAFT = "DRAFT";
     const FULFILLED = "FULFILLED";

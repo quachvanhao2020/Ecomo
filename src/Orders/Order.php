@@ -70,13 +70,12 @@ class Order extends EntityLife{
         /**
      * Set the value of status
      *
-     * @param  string  $status
+     * @param  \Ecomo\Orders\OrderStatus  $status
      *
      * @return  self
      */ 
-    public function setStatus(string $status = null)
+    public function setStatus($status = null)
     {
-        if(!OrderStatus::isValidValue($status)) $status = OrderStatus::DRAFT;
         $this->status = $status;
         return $this;
     }
