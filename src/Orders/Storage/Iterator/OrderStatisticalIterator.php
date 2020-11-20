@@ -1,8 +1,8 @@
 <?php
-namespace Ecomo\Orders\Storage\Iterator;
+namespace Ecomo\Order\Storage\Iterator;
 
 use YPHP\Iterator;
-use Ecomo\Orders\OrderStatistical;
+use Ecomo\Order\OrderStatistical;
 
 class OrderStatisticalIterator extends Iterator{
 

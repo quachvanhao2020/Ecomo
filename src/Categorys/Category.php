@@ -55,6 +55,7 @@ class Category extends EntityFertility{
      */ 
     public function getLogo()
     {
+        if(!$this->logo) $this->logo = new Image();
         return $this->logo;
     }
 
@@ -65,7 +66,7 @@ class Category extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setLogo(Image $logo)
+    public function setLogo(Image $logo = null)
     {
         $this->logo = $logo;
 
@@ -79,6 +80,7 @@ class Category extends EntityFertility{
      */ 
     public function getProducts()
     {
+        if(!$this->products) $this->products = new ProductStorage();
         return $this->products;
     }
 
@@ -105,6 +107,7 @@ class Category extends EntityFertility{
      */ 
     public function getSlug()
     {
+        if(!$this->slug) $this->slug = "";
         return $this->slug;
     }
 
@@ -115,7 +118,7 @@ class Category extends EntityFertility{
      *
      * @return  self
      */ 
-    public function setSlug(string $slug)
+    public function setSlug(string $slug = null)
     {
         $this->slug = $slug;
 

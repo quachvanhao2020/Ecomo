@@ -1,5 +1,5 @@
 <?php
-namespace Ecomo\Identitys;
+namespace Ecomo\Identity;
 
 use Ecomo\Address;
 use Ecomo\Orders\Order;
@@ -43,6 +43,7 @@ class Customer extends User{
      */ 
     public function getDefaultShippingAddress()
     {
+        if(!$this->defaultShippingAddress) $this->defaultShippingAddress = new Address();
         return $this->defaultShippingAddress;
     }
 
@@ -67,6 +68,7 @@ class Customer extends User{
      */ 
     public function getDefaultBillingAddress()
     {
+        if(!$this->defaultBillingAddress) $this->defaultBillingAddress = new Address();
         return $this->defaultBillingAddress;
     }
 
@@ -92,6 +94,8 @@ class Customer extends User{
      */ 
     public function getOrders()
     {
+        if(!$this->orders) $this->orders = new OrderStorage();
+
         return $this->orders;
     }
 
@@ -102,7 +106,7 @@ class Customer extends User{
      *
      * @return  self
      */ 
-    public function setOrders(OrderStorage $orders)
+    public function setOrders(OrderStorage $orders = null)
     {
         $this->orders = $orders;
 

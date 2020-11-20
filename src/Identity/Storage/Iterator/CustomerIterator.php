@@ -1,8 +1,8 @@
 <?php
-namespace Ecomo\Identitys\Storage\Iterator;
+namespace Ecomo\Identity\Storage\Iterator;
 
 use YPHP\Iterator;
-use Ecomo\Identitys\Customer;
+use Ecomo\Identity\Customer;
 
 class CustomerIterator extends Iterator{
 

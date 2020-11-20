@@ -23,12 +23,10 @@ AwareSortFilterInterface
     const MONEY = "money";
     const OLDMONEY = "oldMoney";
     const TAX = "tax";
-    const UPDATEDAT = "updatedAt";
     const TYPE = "type";
     const CATEGORY = "category";
     const SLUG = "slug";
     const AVAILABLEFORPURCHASE = "availableForPurchase";
-    const DEFAULTVARIANT = "defaultVaxriant";
     const VARIANTS = "variants";
 
     public function getPrice(){
@@ -58,12 +56,10 @@ AwareSortFilterInterface
             self::MONEY => $this->getMoney(),
             self::OLDMONEY => $this->getOldMoney(),
             self::TAX => $this->getTax(),
-            self::UPDATEDAT => $this->getUpdatedAt(),
             self::TYPE => $this->getType(),
             self::CATEGORY => $this->getCategory(),
             self::SLUG => $this->getSlug(),
             self::AVAILABLEFORPURCHASE => $this->getAvailableForPurchase(),
-            self::DEFAULTVARIANT => $this->getDefaultVariant(),
             self::VARIANTS => $this->getVariants(),
         ]);
     }
@@ -76,16 +72,14 @@ AwareSortFilterInterface
         $this->setMoney(\tran(@$array[self::MONEY],Money::class));
         $this->setOldMoney(\tran(@$array[self::OLDMONEY],Money::class));        
         $this->setTax(@$array[self::TAX]);
-        $this->setUpdatedAt(@$array[self::UPDATEDAT]);
         $this->setType(@$array[self::TYPE]);
         $this->setCategory(\tran($array[self::CATEGORY],Category::class));  
-        $this->setDefaultVariant(@$array[self::DEFAULTVARIANT]);
         $this->setAvailableForPurchase(@$array[self::AVAILABLEFORPURCHASE]);
         $this->setVariants(@$array[self::VARIANTS]);
     }
 
     /**
-     * @var \YPHP\Storage\AttributeStorage
+     * @var AttributeStorage
      */
     protected $attributes;
     /**
@@ -108,17 +102,13 @@ AwareSortFilterInterface
      */
     protected $oldMoney;
 
-        /**
+    /**
      * 
      *
      * @var Money
      */
     protected $tax;
 
-    /**
-     * @var DateTime
-     */
-    protected $updatedAt;
 
     /**
      * @var string
@@ -140,11 +130,6 @@ AwareSortFilterInterface
      */
     protected $availableForPurchase;
 
-    /**
-     * @var Product
-     */
-    protected $defaultVariant;
-
         /**
      * @var ProductStorage
      */
@@ -157,6 +142,7 @@ AwareSortFilterInterface
      */ 
     public function getMoney()
     {
+        if(!$this->money) $this->money = new Money();
         return $this->money;
     }
 
@@ -181,6 +167,7 @@ AwareSortFilterInterface
      */ 
     public function getOldMoney()
     {
+        if(!$this->oldMoney) $this->oldMoney = new Money();
         return $this->oldMoney;
     }
 
@@ -205,6 +192,7 @@ AwareSortFilterInterface
      */ 
     public function getTax()
     {
+        if(!$this->tax) $this->tax = new Money();
         return $this->tax;
     }
 
@@ -223,36 +211,13 @@ AwareSortFilterInterface
     }
 
     /**
-     * Get the value of updatedAt
-     *
-     * @return  DateTime
-     */ 
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set the value of updatedAt
-     *
-     * @param  DateTime  $updatedAt
-     *
-     * @return  self
-     */ 
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
      * Get the value of type
      *
      * @return  string
      */ 
     public function getType()
     {
+        if(!$this->type) $this->type = "";
         return $this->type;
     }
 
@@ -277,6 +242,7 @@ AwareSortFilterInterface
      */ 
     public function getCategory()
     {
+        if(!$this->category) $this->category = new Category();
         return $this->category;
     }
 
@@ -301,6 +267,7 @@ AwareSortFilterInterface
      */ 
     public function getSlug()
     {
+        if(!$this->slug) $this->slug = "";
         return $this->slug;
     }
 
@@ -325,6 +292,7 @@ AwareSortFilterInterface
      */ 
     public function getAvailableForPurchase()
     {
+        if(!$this->availableForPurchase) $this->availableForPurchase = false;
         return $this->availableForPurchase;
     }
 
@@ -343,36 +311,13 @@ AwareSortFilterInterface
     }
 
     /**
-     * Get the value of defaultVariant
-     *
-     * @return  Product
-     */ 
-    public function getDefaultVariant()
-    {
-        return $this->defaultVariant;
-    }
-
-    /**
-     * Set the value of defaultVariant
-     *
-     * @param  Product  $defaultVariant
-     *
-     * @return  self
-     */ 
-    public function setDefaultVariant(Product $defaultVariant = null)
-    {
-        $this->defaultVariant = $defaultVariant;
-
-        return $this;
-    }
-
-    /**
      * Get the value of variants
      *
      * @return  ProductStorage
      */ 
     public function getVariants()
     {
+        if(!$this->variants) $this->variants = new ProductStorage();
         return $this->variants;
     }
 
@@ -397,6 +342,7 @@ AwareSortFilterInterface
      */ 
     public function getLogo()
     {
+        if(!$this->logo) $this->logo = new Image();
         return $this->logo;
     }
 

@@ -1,11 +1,12 @@
 <?php
-namespace Ecomo\Identitys\Factory;
+namespace Ecomo\Identity\Factory;
 
 use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
-use Ecomo\Identitys\Customer;
+use Ecomo\Identity\Customer;
 use Identimo\UserFilter;
+use Ecomo\Identity\Storage\CustomerStorage;
 
 abstract class BaseCustomerFactory implements ContainerFactoryInterface{
 
@@ -24,7 +25,7 @@ abstract class BaseCustomerFactory implements ContainerFactoryInterface{
      * @param string $before
      * @param UserFilter $filter
      * @param SortingInputInterface $sort
-     * @return mixed
+     * @return CustomerStorage
      */
     public abstract function list(int $first = 0,string $after = "",int $last = -1,string $before = "",FilterInputInterface $filter = null,SortingInputInterface $sort = null);
     /**
@@ -32,11 +33,11 @@ abstract class BaseCustomerFactory implements ContainerFactoryInterface{
      * @param Customer $entity
      * @return bool
      */
-    public abstract function update(string $id,$entity);
+    public abstract function update($id,$entity);
         /**
      * @param string $id Identifier of the entry to look for.
      * 
      * @return bool
      */
-    public abstract function delete(string $id);
+    public abstract function delete($id);
 }

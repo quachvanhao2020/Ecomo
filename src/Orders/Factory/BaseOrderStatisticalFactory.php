@@ -1,14 +1,14 @@
 <?php
-namespace Ecomo\Orders\Factory;
+namespace Ecomo\Order\Factory;
 
 use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
-use Ecomo\Orders\OrderStatistical;
-use Ecomo\Orders\Storage\OrderStatisticalStorage;
+use Ecomo\Order\Ordertatistical;
+use Ecomo\Order\Storage\OrdertSatisticalStorage;
 use YPHP\Filter\StatisticalFilter;
 
-abstract class BaseOrderStatisticalFactory implements ContainerFactoryInterface{
+abstract class BaseOrdertatisticalFactory implements ContainerFactoryInterface{
 
         /**
      * Finds an entry of the container by its identifier and returns it.
@@ -25,12 +25,12 @@ abstract class BaseOrderStatisticalFactory implements ContainerFactoryInterface{
      * @param string $before
      * @param StatisticalFilter $filter
      * @param SortingInputInterface $sort
-     * @return OrderStatisticalStorage
+     * @return OrdertSatisticalStorage
      */
     public abstract function list(int $first = 0,string $after = "",int $last = -1,string $before = "",FilterInputInterface $filter = null,SortingInputInterface $sort = null);
     /**
      * @param string $id Identifier of the entry to look for.
-     * @param OrderStatistical $entity
+     * @param Ordertatistical $entity
      * @return bool
      */
     public abstract function update($id,$entity);

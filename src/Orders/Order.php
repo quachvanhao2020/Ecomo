@@ -1,13 +1,14 @@
 <?php
-namespace Ecomo\Orders;
+namespace Ecomo\Order;
 use YPHP\Entity;
 use Identimo\User;
 use Ecomo\Address;
 use Ecomo\Money;
 use Ecomo\Storage\MoneyStorage;
 use Ecomo\Ships\Shipping;
-use Ecomo\Orders\OrderStatus;
+use Ecomo\Order\OrderStatus;
 use YPHP\EntityLife;
+use Ecomo\Identity\Customer;
 
 class Order extends EntityLife{
     const TOKEN = "token";
@@ -18,18 +19,13 @@ class Order extends EntityLife{
     const GROSSAMOUNTS = "grossAmounts";
     const SHIPPINGMETHOD = "shippingMethod";
     /**
-     * @var OrderStatus
-     */
-    protected $status;
-    /**
      * @var string
      */
     protected $token;
     /**
-     * @var User
+     * @var Customer
      */
     protected $user;
-
     /**
      * @var Address
      */
@@ -67,17 +63,15 @@ class Order extends EntityLife{
         ]);
     }
 
-        /**
-     * Set the value of status
+    /**
+     * Get the value of status
      *
-     * @param  \Ecomo\Orders\OrderStatus  $status
-     *
-     * @return  self
+     * @return  OrderStatus
      */ 
-    public function setStatus($status = null)
+    public function getStatus()
     {
-        $this->status = $status;
-        return $this;
+        if(!$this->status) $this->status = new OrderStatus(OrderStatus::DRAFT);
+        return $this->status;
     }
 
     /**
@@ -131,7 +125,7 @@ class Order extends EntityLife{
     /**
      * Get the value of user
      *
-     * @return  User
+     * @return  Customer
      */ 
     public function getUser()
     {
@@ -141,11 +135,11 @@ class Order extends EntityLife{
     /**
      * Set the value of user
      *
-     * @param  User  $user
+     * @param  Customer  $user
      *
      * @return  self
      */ 
-    public function setUser(User $user = null)
+    public function setUser(Customer $user = null)
     {
         $this->user = $user;
 
@@ -159,6 +153,8 @@ class Order extends EntityLife{
      */ 
     public function getBillingAddress()
     {
+        if(!$this->billingAddress) $this->billingAddress = new Address();
+
         return $this->billingAddress;
     }
 
@@ -183,6 +179,8 @@ class Order extends EntityLife{
      */ 
     public function getShippingAddress()
     {
+        if(!$this->shippingAddress) $this->shippingAddress = new Address();
+
         return $this->shippingAddress;
     }
 
@@ -207,6 +205,7 @@ class Order extends EntityLife{
      */ 
     public function getTotalAmount()
     {
+        if(!$this->totalAmount) $this->totalAmount = new Money();
         return $this->totalAmount;
     }
 
@@ -231,6 +230,8 @@ class Order extends EntityLife{
      */ 
     public function getGrossAmounts()
     {
+        if(!$this->grossAmounts) $this->grossAmounts = new MoneyStorage();
+
         return $this->grossAmounts;
     }
 

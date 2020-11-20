@@ -46,6 +46,8 @@ class Shipping extends Entity{
      */ 
     public function getMethod()
     {
+        if(!$this->method) $this->method = "";
+
         return $this->method;
     }
 

@@ -1,11 +1,11 @@
 <?php
-namespace Ecomo\Orders\Factory;
+namespace Ecomo\Order\Factory;
 
 use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
-use Ecomo\Orders\Order;
-use Ecomo\Orders\OrderFilter;
+use Ecomo\Order\Order;
+use Ecomo\Order\OrderFilter;
 
 abstract class BaseOrderFactory implements ContainerFactoryInterface{
 

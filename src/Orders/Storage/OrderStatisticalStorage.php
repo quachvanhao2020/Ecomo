@@ -1,11 +1,11 @@
 <?php
-namespace Ecomo\Orders\Storage;
+namespace Ecomo\Order\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Orders\OrderStatistical;
-use Ecomo\Orders\Storage\Iterator\OrderStatisticalIterator;
+use Ecomo\Order\OrderStatistical;
+use Ecomo\Order\Storage\Iterator\OrderStatisticalIterator;
 
-class OrderStatisticalStorage extends ArrayObject{
+class OrdertSatisticalStorage extends ArrayObject{
 
 
     /**
@@ -32,7 +32,7 @@ class OrderStatisticalStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  \Ecomo\Orders\OrderStatistical[]  $storage
+     * @param  \Ecomo\Order\OrderStatistical[]  $storage
      *
      * @return  self
      */ 

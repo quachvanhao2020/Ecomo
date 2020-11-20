@@ -1,11 +1,11 @@
 <?php
-namespace Ecomo\Identitys\Storage;
+namespace Ecomo\Identity\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Identitys\Customer;
-use Ecomo\Identitys\Storage\Iterator\CustomerIterator;
+use Ecomo\Identity\Customer;
+use Ecomo\Identity\Storage\Iterator\CustomerIterator;
 
-class Customerstorage extends ArrayObject{
+class CustomerStorage extends ArrayObject{
 
 
     /**
@@ -32,7 +32,7 @@ class Customerstorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  \Ecomo\Identitys\Customer[]  $storage
+     * @param  \Ecomo\Identity\Customer[]  $storage
      *
      * @return  self
      */ 

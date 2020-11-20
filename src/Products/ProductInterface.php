@@ -8,11 +8,9 @@ interface ProductInterface extends EntityInterface{
     function getMoney();
     function getOldMoney();
     function getTax();
-    function getUpdatedAt();
     function getType();
     function getCategory();
     function getSlug();
     function getAvailableForPurchase();
-    function getDefaultVariant();
     function getVariants();
 }

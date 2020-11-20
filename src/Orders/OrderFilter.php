@@ -1,5 +1,5 @@
 <?php
-namespace Ecomo\Orders;
+namespace Ecomo\Order;
 use YPHP\FilterInputInterface;
 use ArrayAccess;
 
