@@ -4,8 +4,9 @@ namespace Ecomo\Products\Storage;
 use YPHP\ArrayObject;
 use Ecomo\Products\Product;
 use Ecomo\Products\Storage\Iterator\ProductIterator;
+use YPHP\Storage\EntityStorage;
 
-class ProductStorage extends ArrayObject implements ProductStorageInterface{
+class ProductStorage extends EntityStorage implements ProductStorageInterface{
 
     /**
      * Create a new iterator from an ArrayObject instance

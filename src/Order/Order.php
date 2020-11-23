@@ -9,8 +9,10 @@ use Ecomo\Ships\Shipping;
 use Ecomo\Order\OrderStatus;
 use YPHP\EntityLife;
 use Ecomo\Identity\Customer;
+use Ecomo\Order\PaymentEnum;
 
 class Order extends EntityLife{
+    const PAYMENTSTATUS = "paymentStatus";
     const TOKEN = "token";
     const USER = "user";
     const BILLINGADDRESS = "billingAddress";
@@ -22,6 +24,10 @@ class Order extends EntityLife{
      * @var string
      */
     protected $token;
+        /**
+     * @var PaymentEnum
+     */
+    protected $paymentStatus;
     /**
      * @var Customer
      */
@@ -55,6 +61,7 @@ class Order extends EntityLife{
         return array_merge(parent::__toArray(),[
             self::TOKEN => $this->getToken(),
             self::USER => $this->getUser(),
+            self::PAYMENTSTATUS => $this->getPaymentStatus(),
             self::BILLINGADDRESS => $this->getBillingAddress(),
             self::SHIPPINGADDRESS => $this->getShippingAddress(),
             self::TOTALAMOUNT => $this->getTotalAmount(),
@@ -70,8 +77,33 @@ class Order extends EntityLife{
      */ 
     public function getStatus()
     {
-        if(!$this->status) $this->status = new OrderStatus(OrderStatus::DRAFT);
+        if(!$this->status instanceof OrderStatus) $this->status = new OrderStatus(OrderStatus::DRAFT);
         return $this->status;
+    }
+
+        /**
+     * Set the value of status
+     *
+     * @param  \Ecomo\Order\OrderStatus  $status
+     *
+     * @return  self
+     */ 
+    public function setStatus($status = null)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+        /**
+     * Get the value of name
+     *
+     * @return  string
+     */ 
+    public function getName()
+    {
+        if(!$this->name) $this->name = $this->getUser()->getName();
+
+        return $this->name;
     }
 
     /**
@@ -129,6 +161,7 @@ class Order extends EntityLife{
      */ 
     public function getUser()
     {
+        if(!$this->user) $this->user = new Customer();
         return $this->user;
     }
 
@@ -249,4 +282,29 @@ class Order extends EntityLife{
         return $this;
     }
     
+
+    /**
+     * Get the value of paymentStatus
+     *
+     * @return  PaymentEnum
+     */ 
+    public function getPaymentStatus()
+    {
+        if(!$this->paymentStatus) $this->paymentStatus = new PaymentEnum(PaymentEnum::UNPAID);
+        return $this->paymentStatus;
+    }
+
+    /**
+     * Set the value of paymentStatus
+     *
+     * @param  PaymentEnum  $paymentStatus
+     *
+     * @return  self
+     */ 
+    public function setPaymentStatus(PaymentEnum $paymentStatus = null)
+    {
+        $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
 }

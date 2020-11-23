@@ -6,6 +6,7 @@ use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
 use Ecomo\Categorys\Category;
 use Ecomo\Categorys\CategoryFilter;
+use Ecomo\Categorys\Storage\CategoryStorage;
 
 abstract class BaseCategoryFactory implements ContainerFactoryInterface{
 
@@ -24,7 +25,7 @@ abstract class BaseCategoryFactory implements ContainerFactoryInterface{
      * @param string $before
      * @param CategoryFilter $filter
      * @param SortingInputInterface $sort
-     * @return mixed
+     * @return CategoryStorage
      */
     public abstract function list(int $first = 0,string $after = "",int $last = -1,string $before = "",FilterInputInterface $filter = null,SortingInputInterface $sort = null);
     /**

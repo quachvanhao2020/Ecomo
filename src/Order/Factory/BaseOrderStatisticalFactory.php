@@ -4,7 +4,7 @@ namespace Ecomo\Order\Factory;
 use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
-use Ecomo\Order\Ordertatistical;
+use Ecomo\Order\OrderStatistical;
 use Ecomo\Order\Storage\OrdertSatisticalStorage;
 use YPHP\Filter\StatisticalFilter;
 
@@ -30,7 +30,7 @@ abstract class BaseOrdertatisticalFactory implements ContainerFactoryInterface{
     public abstract function list(int $first = 0,string $after = "",int $last = -1,string $before = "",FilterInputInterface $filter = null,SortingInputInterface $sort = null);
     /**
      * @param string $id Identifier of the entry to look for.
-     * @param Ordertatistical $entity
+     * @param OrderStatistical $entity
      * @return bool
      */
     public abstract function update($id,$entity);

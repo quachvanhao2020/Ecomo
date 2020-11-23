@@ -2,9 +2,9 @@
 namespace Ecomo\Identity;
 
 use Ecomo\Address;
-use Ecomo\Orders\Order;
+use Ecomo\Order\Order;
 use Identimo\User;
-use Ecomo\Orders\Storage\OrderStorage;
+use Ecomo\Order\Storage\OrderStorage;
 
 class Customer extends User{
 

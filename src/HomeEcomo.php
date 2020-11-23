@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo;
 use Ecomo\Storage\ActivitieStorage;
-use Ecomo\Orders\OrderStatistical;
+use Ecomo\Order\OrderStatistical;
 use Ecomo\Products\ProductStatistical;
 use Identimo\Statistical\StaffStatistical;
 use YPHP\Entity;

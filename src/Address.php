@@ -30,35 +30,35 @@ class Address extends Entity{
     /**
      * @var string
      */
-    protected $companyName = "string" ;
+    protected $companyName = "" ;
         /**
      * @var string
      */
-    protected $streetAddress1 = "string" ;
+    protected $streetAddress1 = "" ;
         /**
      * @var string
      */
-    protected $streetAddress2 = "string" ;
+    protected $streetAddress2 = "" ;
         /**
      * @var string
      */
-    protected $city = "string" ;
+    protected $city = "" ;
         /**
      * @var string
      */
-    protected $cityArea = "string" ;
+    protected $cityArea = "" ;
         /**
      * @var string
      */
-    protected $postalCode = "string" ;
+    protected $postalCode = "" ;
         /**
      * @var string
      */
-    protected $country = "country" ;
+    protected $country = "" ;
         /**
      * @var string
      */
-    protected $countryArea = "string" ;
+    protected $countryArea = "" ;
 
     /**
      * Get the value of companyName
@@ -77,7 +77,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setCompanyName(string $companyName)
+    public function setCompanyName(string $companyName = null)
     {
         $this->companyName = $companyName;
 
@@ -101,7 +101,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setStreetAddress1(string $streetAddress1)
+    public function setStreetAddress1(string $streetAddress1 = null)
     {
         $this->streetAddress1 = $streetAddress1;
 
@@ -125,7 +125,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setStreetAddress2(string $streetAddress2)
+    public function setStreetAddress2(string $streetAddress2 = null)
     {
         $this->streetAddress2 = $streetAddress2;
 
@@ -149,7 +149,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setCity(string $city)
+    public function setCity(string $city = null)
     {
         $this->city = $city;
 
@@ -173,7 +173,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setCityArea(string $cityArea)
+    public function setCityArea(string $cityArea = null)
     {
         $this->cityArea = $cityArea;
 
@@ -197,7 +197,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setPostalCode(string $postalCode)
+    public function setPostalCode(string $postalCode = null)
     {
         $this->postalCode = $postalCode;
 
@@ -221,7 +221,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setCountry(string $country)
+    public function setCountry(string $country = null)
     {
         $this->country = $country;
 
@@ -245,7 +245,7 @@ class Address extends Entity{
      *
      * @return  self
      */ 
-    public function setCountryArea(string $countryArea)
+    public function setCountryArea(string $countryArea = null)
     {
         $this->countryArea = $countryArea;
 
