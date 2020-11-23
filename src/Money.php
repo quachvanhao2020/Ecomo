@@ -32,7 +32,7 @@ class Money extends Entity{
     }
 
     protected function update(){
-        $this->money = BaseMoney::of($this->price,$this->currency);
+        $this->money = BaseMoney::of($this->price,\strtoupper($this->currency));
     }
 
     /**
