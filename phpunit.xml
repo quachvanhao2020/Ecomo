@@ -1,0 +1,19 @@
+<phpunit
+        colors="true"
+        bootstrap="./tests/bootstrap.php"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        stopOnRisky="false"
+>
+    <testsuites>
+        <testsuite name="Your tests">
+            <file>tests/ProductTest.php</file>
+            <file>tests/CategoryTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

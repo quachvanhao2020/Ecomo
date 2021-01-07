@@ -16,8 +16,8 @@ class Category extends EntityFertility{
      * 
      * @ORM\Id
      * @ORM\Column(type="string",name="id")
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * \@ORM\GeneratedValue(strategy="CUSTOM")
+     * \@ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
      * @var string
      */
     protected $id;
@@ -69,16 +69,10 @@ class Category extends EntityFertility{
     protected $slug;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Ecomo\Product\Product")
+     * @ORM\OneToMany(targetEntity="Ecomo\Product\Product",mappedBy="category")
      * @var ProductStorage
      */
     protected $products;
-
-    public function __construct(string $id = null)
-    {
-        parent::__construct($id);
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get the value of logo

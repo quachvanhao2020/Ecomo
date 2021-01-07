@@ -8,12 +8,17 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ecomo\\": "src/"
+            "Ecomo\\": "src/"        
         },
         "files": [
             "src/functions.php",
             "src/awake.php"
         ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ecomo\\Tests\\": "tests/"
+        }
     },
     "require": {
         "php": ">=5.3",

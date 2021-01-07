@@ -2,13 +2,13 @@
 namespace Ecomo\Product;
 use Doctrine\ORM\Mapping as ORM;
 use YPHP\DateTime;
-use Ecomo\Categorys\Category;
+use Ecomo\Category\Category;
 use Ecomo\Filter\AwareKeepInterface;
 use Ecomo\Filter\AwarePriceInterface;
 use Ecomo\Filter\AwareSortFilterInterface;
 use Ecomo\Product\Storage\ProductStorage;
 use YPHP\EntityFertilityFinal;
-use YPHP\Model\Media\Image;
+use YPHP\Model\Stream\Image;
 use YPHP\Storage\AttributeStorage;
 use Ecomo\Filter\SortFilter;
 use Exchamo\Money;
@@ -129,6 +129,7 @@ AwareSortFilterInterface
     protected $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Category\Category",cascade={"persist"})
      * @var Category
      */
     protected $category;
