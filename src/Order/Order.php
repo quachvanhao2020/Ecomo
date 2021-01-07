@@ -1,17 +1,31 @@
 <?php
 namespace Ecomo\Order;
-use YPHP\Entity;
-use Identimo\User;
+use Doctrine\ORM\Mapping as ORM;
 use Ecomo\Address;
-use Ecomo\Money;
-use Ecomo\Storage\MoneyStorage;
 use Ecomo\Ships\Shipping;
 use Ecomo\Order\OrderStatus;
 use YPHP\EntityLife;
 use Ecomo\Identity\Customer;
 use Ecomo\Order\PaymentEnum;
+use Ecomo\Product\Storage\ProductStorage;
+use Ecomo\Product\Product;
 
+/** 
+ * @ORM\Entity 
+ * @ORM\Table(name="orders")
+ */
 class Order extends EntityLife{
+    
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+
     const PAYMENTSTATUS = "paymentStatus";
     const TOKEN = "token";
     const USER = "user";
@@ -20,38 +34,44 @@ class Order extends EntityLife{
     const TOTALAMOUNT = "totalAmount";
     const GROSSAMOUNTS = "grossAmounts";
     const SHIPPINGMETHOD = "shippingMethod";
+
     /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $token;
-        /**
+
+    /**
+     * @ORM\Embedded(class = "Ecomo\Order\PaymentEnum")
      * @var PaymentEnum
      */
     protected $paymentStatus;
+
     /**
+     * @ORM\ManyToOne(targetEntity="YPHP\Model\Stream\Image",cascade={"persist"})
      * @var Customer
      */
     protected $user;
+
     /**
+     * @ORM\ManyToMany(targetEntity="Ecomo\Product\Product", cascade={"persist"})
+     * @var ProductStorage
+     */
+    protected $products;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Address",cascade={"persist"})
      * @var Address
      */
     protected $billingAddress;
+
     /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Address",cascade={"persist"})
      * @var Address
      */
     protected $shippingAddress;
 
     /**
-     * @var Money
-     */
-    protected $totalAmount;
-
-    /**
-     * @var MoneyStorage
-     */
-    protected $grossAmounts;
-
-        /**
      * @var Shipping
      */
     protected $shippingMethod;
@@ -64,8 +84,6 @@ class Order extends EntityLife{
             self::PAYMENTSTATUS => $this->getPaymentStatus(),
             self::BILLINGADDRESS => $this->getBillingAddress(),
             self::SHIPPINGADDRESS => $this->getShippingAddress(),
-            self::TOTALAMOUNT => $this->getTotalAmount(),
-            self::GROSSAMOUNTS => $this->getGrossAmounts(),
             self::SHIPPINGMETHOD => $this->getShippingMethod(),
         ]);
     }
@@ -94,7 +112,7 @@ class Order extends EntityLife{
         return $this;
     }
 
-        /**
+    /**
      * Get the value of name
      *
      * @return  string
@@ -230,59 +248,7 @@ class Order extends EntityLife{
 
         return $this;
     }
-
-    /**
-     * Get the value of totalAmount
-     *
-     * @return  Money
-     */ 
-    public function getTotalAmount()
-    {
-        if(!$this->totalAmount) $this->totalAmount = new Money();
-        return $this->totalAmount;
-    }
-
-    /**
-     * Set the value of totalAmount
-     *
-     * @param  Money  $totalAmount
-     *
-     * @return  self
-     */ 
-    public function setTotalAmount(Money $totalAmount = null)
-    {
-        $this->totalAmount = $totalAmount;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of grossAmounts
-     *
-     * @return  MoneyStorage
-     */ 
-    public function getGrossAmounts()
-    {
-        if(!$this->grossAmounts) $this->grossAmounts = new MoneyStorage();
-
-        return $this->grossAmounts;
-    }
-
-    /**
-     * Set the value of grossAmounts
-     *
-     * @param  MoneyStorage  $grossAmounts
-     *
-     * @return  self
-     */ 
-    public function setGrossAmounts(MoneyStorage $grossAmounts = null)
-    {
-        $this->grossAmounts = $grossAmounts;
-
-        return $this;
-    }
     
-
     /**
      * Get the value of paymentStatus
      *
@@ -304,6 +270,31 @@ class Order extends EntityLife{
     public function setPaymentStatus(PaymentEnum $paymentStatus = null)
     {
         $this->paymentStatus = $paymentStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of products
+     *
+     * @return  ProductStorage
+     */ 
+    public function getProducts()
+    {
+        if(!$this->products) $this->products = new ProductStorage();
+        return $this->products;
+    }
+
+    /**
+     * Set the value of products
+     *
+     * @param  ProductStorage  $products
+     *
+     * @return  self
+     */ 
+    public function setProducts(ProductStorage $products = null)
+    {
+        $this->products = $products;
 
         return $this;
     }

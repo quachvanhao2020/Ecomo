@@ -1,14 +1,33 @@
 <?php
 namespace Ecomo\Ships;
 use YPHP\Entity;
-use Ecomo\Money;
+use Exchamo\Money;
+use Doctrine\ORM\Mapping as ORM;
 
+/** 
+ * @ORM\Entity 
+ * @ORM\Table(name="ships")
+ */
 class Shipping extends Entity{
+
     /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $method;
-        /**
+
+    /**
+     * @ORM\Embedded(class = "Exchamo\Money")
      * @var Money
      */
     protected $amount;

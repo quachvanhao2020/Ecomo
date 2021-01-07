@@ -1,8 +1,23 @@
 <?php
 namespace Ecomo;
 use YPHP\Entity;
+use Doctrine\ORM\Mapping as ORM;
 
+/** 
+ * @ORM\Entity 
+ * @ORM\Table(name="address")
+ */
 class Address extends Entity{
+
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
     
     const COMPANYNAME = "companyName";
     const STREETADDRESS1 = "streetAddress1";
@@ -28,34 +43,49 @@ class Address extends Entity{
     }
 
     /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $companyName = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $streetAddress1 = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $streetAddress2 = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $city = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $cityArea = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $postalCode = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $country = "" ;
-        /**
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $countryArea = "" ;

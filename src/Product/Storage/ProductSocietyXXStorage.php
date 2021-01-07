@@ -1,27 +1,27 @@
 <?php
-namespace Ecomo\Category\Storage;
+namespace Ecomo\Product\Storage;
 
 use YPHP\ArrayObject;
-use Ecomo\Category\Category;
-use Ecomo\Category\Storage\Iterator\CategoryIterator;
+use Ecomo\Product\ProductSocietyXX;
+use Ecomo\Product\Storage\Iterator\ProductSocietyXXIterator;
 
-class CategoryStorage extends ArrayObject{
+class ProductSocietyXXStorage extends ProductSocietyXStorage{
 
 
     /**
      * Create a new iterator from an ArrayObject instance
      *
-     * @return CategoryIterator
+     * @return ProductSocietyXXIterator
      */
     public function getIterator()
     {
-        return new CategoryIterator($this->storage);
+        return new ProductSocietyXXIterator($this->storage);
     }
 
     /**
      * Get the value of storage
      *
-     * @return  Category[]
+     * @return  \Ecomo\Product\ProductSocietyXX[]
      */ 
     public function getStorage()
     {
@@ -32,7 +32,7 @@ class CategoryStorage extends ArrayObject{
     /**
      * Set the value of storage
      *
-     * @param  \Ecomo\Category\Category[]  $storage
+     * @param  ProductSocietyXX[]  $storage
      *
      * @return  self
      */ 

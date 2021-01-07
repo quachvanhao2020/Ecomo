@@ -1,11 +1,39 @@
 <?php
-namespace Ecomo\Categorys;
-
+namespace Ecomo\Category;
+use Doctrine\ORM\Mapping as ORM;
 use YPHP\EntityFertility;
-use YPHP\Model\Media\Image;
-use Ecomo\Products\Storage\ProductStorage;
+use YPHP\Model\Stream\Image;
+use Ecomo\Product\Storage\ProductStorage;
+use Ecomo\Product\Storage\ProductStorageInterface;
 
+/** 
+ * @ORM\Entity 
+ * @ORM\Table(name="categorys")
+ */
 class Category extends EntityFertility{
+
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * Many Categories have One Category.
+     * @ORM\ManyToOne(targetEntity="Ecomo\Category\Category", inversedBy="children",cascade={"persist"})
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
+     */
+    protected $parent;
+
+    /**
+     * One Category has Many Categories.
+     * @ORM\OneToMany(targetEntity="Ecomo\Category\Category", mappedBy="parent")
+     */
+    protected $children;
 
     const LOGO = "logo";
     const SLUG = "slug";
@@ -27,26 +55,30 @@ class Category extends EntityFertility{
         $this->setSlug(@$array[self::SLUG]);
         $this->setProducts(\tran(@$array[self::PRODUCTS],ProductStorage::class));
     }
+
     /**
-     * 
-     *
+     * @ORM\ManyToOne(targetEntity="YPHP\Model\Stream\Image",cascade={"persist"})
      * @var Image
      */
     protected $logo;
 
-        /**
-     * 
-     *
+    /**
+     * @ORM\Column(type="string",nullable=true)
      * @var string
      */
     protected $slug;
 
-        /**
-     * 
-     *
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecomo\Product\Product")
      * @var ProductStorage
      */
     protected $products;
+
+    public function __construct(string $id = null)
+    {
+        parent::__construct($id);
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get the value of logo
@@ -87,14 +119,12 @@ class Category extends EntityFertility{
     /**
      * Set the value of products
      *
-     * @param  \Ecomo\Products\Storage\ProductStorage  $products
+     * @param  \Ecomo\Product\Storage\ProductStorage  $products
      *
      * @return  self
      */ 
-    public function setProducts($products = null)
+    public function setProducts(ProductStorageInterface $products = null)
     {
-        if(!$products instanceof ProductStorage) return;
-
         $this->products = $products;
 
         return $this;

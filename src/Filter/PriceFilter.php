@@ -1,7 +1,8 @@
 <?php
 namespace Ecomo\Filter;
-use Ecomo\Money;
+use Exchamo\Money;
 use Ecomo\MoneyHelper;
+use ArrayAccess;
 
 class PriceFilter extends EntityFilter
 {
@@ -42,7 +43,7 @@ class PriceFilter extends EntityFilter
         parent::__construct($id);
     }
 
-    public function filter($items)
+    public function filter(ArrayAccess &$items)
     {
         if(is_iterable($items)){
             $moneyHelper = $this->getMoneyHelper();

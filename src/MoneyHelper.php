@@ -1,7 +1,7 @@
 <?php
 namespace Ecomo;
 use Brick\Money\CurrencyConverter;
-use Ecomo\Money;
+use Exchamo\Money;
 
 class MoneyHelper{
 

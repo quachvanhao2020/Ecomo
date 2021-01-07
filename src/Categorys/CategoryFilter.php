@@ -1,5 +1,5 @@
 <?php
-namespace Ecomo\Categorys;
+namespace Ecomo\Category;
 
 use YPHP\FilterInputInterface;
 use ArrayAccess;

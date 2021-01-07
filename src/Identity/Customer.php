@@ -1,87 +1,95 @@
 <?php
 namespace Ecomo\Identity;
-
 use Ecomo\Address;
-use Ecomo\Order\Order;
 use Identimo\User;
 use Ecomo\Order\Storage\OrderStorage;
+use Doctrine\ORM\Mapping as ORM;
+use Ecomo\Order\Order;
 
-class Customer extends User{
+/** 
+ * @ORM\Entity 
+ * @ORM\DiscriminatorMap({"customer" = "Customer"})
+ * @ORM\Table(name="customer")
+ */
+abstract class Customer extends User{
 
-    const DEFAULTSHIPPINGADDRESS = "defaultShippingAddress";
-    const DEFAULTBILLINGADDRESS = "defaultBillingAddress";
+    const SHIPPINGADDRESS = "shippingAddress";
+    const BILLINGADDRESS = "billingAddress";
     const ORDERS = "orders";
 
     public function __toArray()
     {
         return array_merge(parent::__toArray(),[
-            self::DEFAULTBILLINGADDRESS => $this->getDefaultBillingAddress(),
-            self::DEFAULTSHIPPINGADDRESS => $this->getDefaultShippingAddress(),
+            self::BILLINGADDRESS => $this->getBillingAddress(),
+            self::SHIPPINGADDRESS => $this->getShippingAddress(),
             self::ORDERS => $this->getOrders(),
         ]);
     }
 
     /**
+     * @ORM\OneToMany(targetEntity="Ecomo\Order\Order", mappedBy="parent")
      * @var OrderStorage
      */
     protected $orders;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Address",cascade={"persist"})
      * @var Address
      */
-    protected $defaultShippingAddress;
+    protected $shippingAddress;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Address",cascade={"persist"})
      * @var Address
      */
-    protected $defaultBillingAddress;
+    protected $billingAddress;
 
     /**
-     * Get the value of defaultShippingAddress
+     * Get the value of ShippingAddress
      *
      * @return  Address
      */ 
-    public function getDefaultShippingAddress()
+    public function getShippingAddress()
     {
-        if(!$this->defaultShippingAddress) $this->defaultShippingAddress = new Address();
-        return $this->defaultShippingAddress;
+        if(!$this->shippingAddress) $this->shippingAddress = new Address();
+        return $this->shippingAddress;
     }
 
     /**
-     * Set the value of defaultShippingAddress
+     * Set the value of ShippingAddress
      *
-     * @param  Address  $defaultShippingAddress
+     * @param  Address  $shippingAddress
      *
      * @return  self
      */ 
-    public function setDefaultShippingAddress(Address $defaultShippingAddress)
+    public function setShippingAddress(Address $shippingAddress)
     {
-        $this->defaultShippingAddress = $defaultShippingAddress;
+        $this->shippingAddress = $shippingAddress;
 
         return $this;
     }
 
     /**
-     * Get the value of defaultBillingAddress
+     * Get the value of BillingAddress
      *
      * @return  Address
      */ 
-    public function getDefaultBillingAddress()
+    public function getBillingAddress()
     {
-        if(!$this->defaultBillingAddress) $this->defaultBillingAddress = new Address();
-        return $this->defaultBillingAddress;
+        if(!$this->billingAddress) $this->billingAddress = new Address();
+        return $this->billingAddress;
     }
 
     /**
-     * Set the value of defaultBillingAddress
+     * Set the value of BillingAddress
      *
-     * @param  Address  $defaultBillingAddress
+     * @param  Address  $billingAddress
      *
      * @return  self
      */ 
-    public function setDefaultBillingAddress(Address $defaultBillingAddress)
+    public function setBillingAddress(Address $billingAddress)
     {
-        $this->defaultBillingAddress = $defaultBillingAddress;
+        $this->billingAddress = $billingAddress;
 
         return $this;
     }

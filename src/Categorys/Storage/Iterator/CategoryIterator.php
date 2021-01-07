@@ -1,8 +1,8 @@
 <?php
-namespace Ecomo\Categorys\Storage\Iterator;
+namespace Ecomo\Category\Storage\Iterator;
 
 use YPHP\Iterator;
-use Ecomo\Categorys\Category;
+use Ecomo\Category\Category;
 
 class CategoryIterator extends Iterator{
 

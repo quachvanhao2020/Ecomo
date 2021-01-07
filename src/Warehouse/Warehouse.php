@@ -1,14 +1,28 @@
 <?php
 namespace Ecomo\Warehouse;
+use Doctrine\ORM\Mapping as ORM;
 use Ecomo\Address;
-use Ecomo\Products\Storage\ProductStorage;
-use YPHP\Entity;
-use Ecomo\Products\Storage\ProductStorageInterface;
+use Ecomo\Product\Storage\ProductStorage;
+use Ecomo\Product\Storage\ProductStorageInterface;
 use Ecomo\Warehouse\ProductInfo;
 use Ecomo\Warehouse\Storage\ProductInfoStorage;
 use YPHP\EntityLife;
 
+/** 
+ * @ORM\Entity 
+ * @ORM\Table(name="ware_houses")
+ */
 class Warehouse extends EntityLife{
+    /**
+     * 
+     * @ORM\Id
+     * @ORM\Column(type="string",name="id")
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="Doctrine\ORM\Id\UuidGenerator")
+     * @var string
+     */
+    protected $id;
+
     const ADDRESS = "address";
     const PRODUCTS = "products";
     const PRODUCTINFOS = "productInfos";
@@ -22,16 +36,19 @@ class Warehouse extends EntityLife{
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ecomo\Address",cascade={"persist"})
      * @var Address
      */
     protected $address;
 
-        /**
+    /**
+     * @ORM\ManyToMany(targetEntity="Ecomo\Product\Product")
      * @var ProductStorageInterface
      */
     protected $products;
 
-            /**
+    /**
+     * @ORM\Column(type="object",nullable=true)
      * @var ProductInfoStorage
      */
     protected $productInfos;
