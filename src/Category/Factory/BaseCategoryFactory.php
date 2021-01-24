@@ -7,8 +7,12 @@ use YPHP\SortingInputInterface;
 use Ecomo\Category\Category;
 use Ecomo\Category\CategoryFilter;
 use Ecomo\Category\Storage\CategoryStorage;
+use YPHP\Factory\BaseEntityFactory;
 
-abstract class BaseCategoryFactory implements ContainerFactoryInterface{
+abstract class BaseCategoryFactory extends BaseEntityFactory{
+
+    const ENTITY = Category::class;
+    const STORAGE = CategoryStorage::class;
 
         /**
      * Finds an entry of the container by its identifier and returns it.

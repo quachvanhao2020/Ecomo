@@ -1,14 +1,17 @@
 <?php
 namespace Ecomo\Product\Factory;
 
-use YPHP\ContainerFactoryInterface;
 use YPHP\FilterInputInterface;
 use YPHP\SortingInputInterface;
 use Ecomo\Product\Product;
 use Ecomo\Product\ProductFilter;
+use YPHP\Factory\BaseEntityFactory;
+use Ecomo\Product\Storage\ProductStorage;
 
-abstract class BaseProductFactory implements ContainerFactoryInterface{
+abstract class BaseProductFactory extends BaseEntityFactory{
 
+    const ENTITY = Product::class;
+    const STORAGE = ProductStorage::class;
         /**
      * Finds an entry of the container by its identifier and returns it.
      *
@@ -24,7 +27,7 @@ abstract class BaseProductFactory implements ContainerFactoryInterface{
      * @param string $before
      * @param ProductFilter $filter
      * @param SortingInputInterface $sort
-     * @return mixed
+     * @return ProductStorage
      */
     public abstract function list(int $first = 0,string $after = "",int $last = -1,string $before = "",FilterInputInterface $filter = null,SortingInputInterface $sort = null);
     /**

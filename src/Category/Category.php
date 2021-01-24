@@ -51,9 +51,9 @@ class Category extends EntityFertility{
     public function __arrayTo($array)
     {
         parent::__arrayTo($array);
-        $this->setLogo(\tran(@$array[self::LOGO],Image::class));
+        $this->setLogo(@$array[self::LOGO]);
         $this->setSlug(@$array[self::SLUG]);
-        $this->setProducts(\tran(@$array[self::PRODUCTS],ProductStorage::class));
+        $this->setProducts(@$array[self::PRODUCTS]);
     }
 
     /**
@@ -81,7 +81,7 @@ class Category extends EntityFertility{
      */ 
     public function getLogo()
     {
-        if(!$this->logo) $this->logo = new Image();
+        //if(!$this->logo) $this->logo = new Image();
         return $this->logo;
     }
 

@@ -5,8 +5,8 @@ use Ecomo\Filter\AwarePriceInterface;
 use Ecomo\Filter\AwareSortFilterInterface;
 use Ecomo\Filter\AwareKeepInterface;
 use Ecomo\Filter\SortFilter;
-use Ecomo\Money;
-use YPHP\Model\Media\Image;
+use YPHP\Model\Stream\Image;
+use Exchamo\Money;
 
 class ProductX extends Product implements 
 AwareKeepInterface 
@@ -350,6 +350,7 @@ AwareKeepInterface
      */ 
     public function getIsMonopoly()
     {
+        if($this->isMonopoly == null) $this->isMonopoly = false;
         return $this->isMonopoly;
     }
 
@@ -360,7 +361,7 @@ AwareKeepInterface
      *
      * @return  self
      */ 
-    public function setIsMonopoly(bool $isMonopoly)
+    public function setIsMonopoly(bool $isMonopoly = null)
     {
         $this->isMonopoly = $isMonopoly;
 
