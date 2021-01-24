@@ -4,8 +4,9 @@ namespace Ecomo\Category\Storage;
 use YPHP\ArrayObject;
 use Ecomo\Category\Category;
 use Ecomo\Category\Storage\Iterator\CategoryIterator;
+use YPHP\Storage\EntityStorage;
 
-class CategoryStorage extends ArrayObject{
+class CategoryStorage extends EntityStorage{
 
 
     /**
